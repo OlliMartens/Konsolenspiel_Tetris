@@ -49,6 +49,7 @@ int main() {
 	int position = 0;
 
 	U_square(20, 1, 10, 10);
+	cout << endl;
 	system("pause");
 
 	while (true)

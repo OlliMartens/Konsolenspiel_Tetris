@@ -12,6 +12,9 @@ void go(int a, int b) {
     SetConsoleCursorPosition(out, cord);
 }
 
+void Color(int y) {
+    SetConsoleTextAttribute(out, y);
+}
 
  void simple_square(int X, int Y, int width, int height){
   for (int set1 = 0; set1<height; set1++)
@@ -24,19 +27,27 @@ void go(int a, int b) {
 
  void U_square(int X, int Y, int width, int height)
  {
-     for (int set1 = 0; set1 > height; set1++, Y++)
+     for (int set1 = 0; set1 < height; set1++, Y++)
      {
          go(X, Y);
-         if (set1 == height - 1) { 
+         Color(9);
+         cout << char(219); 
+         go(X + (width -1), Y); 
+         Color(9);
+         cout << char(219);
+         go(X, Y);
+         if (set1 == height -1) {
              for (int set2 = 0; set2 < width; set2++) {
-                 cout << char(220);
+                 Color(9);
+                 cout << char(223);
                  continue;
              }
          }
-         cout << char(219); 
-         go(X + (width -1), Y); 
-         cout << char(219);
+         //Frabe auf den Ursprung zurücksetzen
+         Color(7);
      }
  }
+
+
 
  

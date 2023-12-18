@@ -24,12 +24,18 @@
     <ClCompile Include="Hilfsfunktionen.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="GUI.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bausteine.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Hilfsfunktionen.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

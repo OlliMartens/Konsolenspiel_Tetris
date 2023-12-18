@@ -2,6 +2,7 @@
 #include<windows.h>
 #include "Bausteine.h"
 #include "Hilfsfunktionen.h"
+#include "GUI.h"
 
 
 using namespace std;
@@ -46,6 +47,9 @@ int main() {
 	int e = 1;
 	int f = 8;
 	int position = 0;
+
+	U_square(20, 1, 10, 10);
+	system("pause");
 
 	while (true)
 	{

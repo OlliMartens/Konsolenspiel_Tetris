@@ -50,6 +50,7 @@ int main() {
 		simple_square(41, 8, 25, 1);
 		Sleep(50);
 		system("cls");
+		block(26, 1);
 	}
 	
 	

@@ -48,6 +48,15 @@ void Color(int y) {
      }
  }
 
+ void L_block(int X, int Y) {
+     go(X,Y);
+     Color(10);
+     cout << char(220) << char(220) << char(220) << char(220) << endl;
+     go(X, Y+1);
+     Color(10);
+     cout << char(223) << endl;
+ }
+
 
  //Quellen:
  // https://mycodecollection.blogspot.com/2015/01/c-console-basic-graphic-techniques.html

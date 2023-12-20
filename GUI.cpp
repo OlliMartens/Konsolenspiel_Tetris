@@ -50,10 +50,10 @@ void Color(int y) {
 
 
  //Quellen:
- //https://mycodecollection.blogspot.com/2015/01/c-console-basic-graphic-techniques.html
+ // https://mycodecollection.blogspot.com/2015/01/c-console-basic-graphic-techniques.html
  // https://mycodecollection.blogspot.com/2014/12/console-fun-colors.html
  // ASCII-Tabelle erweitert
- //https://theasciicode.com.ar/extended-ascii-code/black-square-ascii-code-254.html
+ // https://theasciicode.com.ar/extended-ascii-code/black-square-ascii-code-254.html
 
 
 

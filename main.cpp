@@ -40,15 +40,9 @@ int main() {
 	int rows = sizeof(spielfeld) / sizeof(spielfeld[0]);	//Anzahl Spalten (waagerecht)
 	int cols = sizeof(spielfeld[0]) / sizeof(spielfeld[0][0]);	//Anzahl Zeilen (senkrecht)
 	
-	int a = 0;
-	int b = 9;
-	int c = 0;
-	int d = 8;
-	int e = 1;
-	int f = 8;
-	int position = 0;
 
-	/*
+	
+	
 	//***Test Spielfeld in Bunt*** 
 	while (true)
 	{
@@ -57,13 +51,21 @@ int main() {
 		Sleep(50);
 		system("cls");
 	}
-	*/
+	
 	
 
 	while (true)
 	{
 
 		noCursor();
+		int a = 0;
+		int b = 9;
+		int c = 0;
+		int d = 8;
+		int e = 1;
+		int f = 8;
+		int position = 0;
+
 		
 		while(a < rows - 3 || c < rows - 3 || e < rows - 3)
 		{
@@ -91,10 +93,8 @@ int main() {
 					}
 					cout << endl;
 				}
-				Sleep(1000);
+				Sleep(100);
 				system("cls");
 		}
-
-		
 	}
 }

@@ -13,9 +13,9 @@ int viereck(char arrayForm[25][18], int a, int b, int c, int d, int e, int f,int
 	arrayForm[positionX][8] = ' ';
 	arrayForm[positionX][9] = ' ';
 	//Position der Form
-	arrayForm[a][b] = '#';
-	arrayForm[c][d] = '#';
-	arrayForm[e][f] = '#';
+	arrayForm[a][b] = char(254);
+	arrayForm[c][d] = char(254);
+	arrayForm[e][f] = char(254);
 	return 1;
 }
 

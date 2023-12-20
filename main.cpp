@@ -48,23 +48,33 @@ int main() {
 	int f = 8;
 	int position = 0;
 
-	U_square(20, 1, 10, 10);
-	cout << endl;
-	system("pause");
+	/*
+	//***Test Spielfeld in Bunt*** 
+	while (true)
+	{
+		U_square(20, 1, 20, 20);
+		simple_square(41, 8, 25, 1);
+		Sleep(50);
+		system("cls");
+	}
+	*/
+	
 
 	while (true)
 	{
 
-
 		noCursor();
+		
 		while(a < rows - 3 || c < rows - 3 || e < rows - 3)
 		{
-			
 				a++;
 				c++;
 				e++;
 				position++;
 
+
+				//GetAsyncKeyState fragt ab, ob r (0x52) gedrückt wurde
+				//Liste mit Keys: https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 				if (GetAsyncKeyState(0x52)) {
 				formenRotieren(a, b, c, d, e, f);
 				}

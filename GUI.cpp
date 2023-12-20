@@ -20,7 +20,7 @@ void Color(int y) {
   for (int set1 = 0; set1<height; set1++)
   {
   go(X, Y); Y++;
-  for (int set2 = 0; set2<width; set2++){ cout << char(219); }cout << endl;
+  for (int set2 = 0; set2<width; set2++){ cout << char(223); }cout << endl;
   }
   }
 
@@ -47,6 +47,13 @@ void Color(int y) {
          Color(7);
      }
  }
+
+
+ //Quellen:
+ //https://mycodecollection.blogspot.com/2015/01/c-console-basic-graphic-techniques.html
+ // https://mycodecollection.blogspot.com/2014/12/console-fun-colors.html
+ // ASCII-Tabelle erweitert
+ //https://theasciicode.com.ar/extended-ascii-code/black-square-ascii-code-254.html
 
 
 

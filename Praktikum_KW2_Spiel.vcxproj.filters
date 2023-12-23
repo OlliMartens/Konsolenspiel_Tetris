@@ -21,7 +21,7 @@
     <ClCompile Include="Bausteine.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Hilfsfunktionen.cpp">
+    <ClCompile Include="GUI.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,7 +29,7 @@
     <ClInclude Include="Bausteine.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Hilfsfunktionen.h">
+    <ClInclude Include="GUI.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

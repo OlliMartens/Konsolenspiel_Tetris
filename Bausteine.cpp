@@ -1,56 +1,28 @@
 #include <iostream>
+#include "Bausteine.h"
 
-void randomForm(char arrayForm[24][16],int status) {
+void randomForm(int& nextBlock) {
 	
 	srand((unsigned)time(NULL));
-	status = rand() % 6;
-}
-
-
-
-void blocks() {
-
-	char blocks[6][3][3]{
-		{	//erster Block
-		{0,1,0},
-		{0,1,0},
-		{0,0,0}
-		},
-		{	//zweiter Block
-		{0,1,0},
-		{0,1,0},
-		{0,0,0}
-		},
-		{	//dritter Block
-		{0,1,0},
-		{0,1,0},
-		{0,0,0}
-		},
-		{	//vierter Block
-		{0,1,0},
-		{0,1,0},
-		{0,0,0}
-		},
-		{	//fünfter Block
-		{0,1,0},
-		{0,1,0},
-		{0,0,0}
-		},
-		{	//sechster Block
-		{0,1,0},
-		{0,1,0},
-		{0,0,0}
-		}
-	};
-	
+	nextBlock = rand() % 6;
 }
 
 void rotateBlocks() {
 
 }
 
-void printBlocks(char feld[24][16]) {
-
+void printBlocks(int nextBlock, tetris& tempBlock,int pos1, int pos2) {
+	for (int pos1 = 0; pos1 < 2; pos1++)
+	{
+		for (int pos2 = 0; pos2 < 2; pos2++) {
+			if (tempBlock.blocks[nextBlock][pos1][pos2] == 1) {
+				tempBlock.spielfeld[12 + pos2][pos1] = char(219);
+			}
+			//else {
+			//	tempBlock.spielfeld[pos1][8 + pos2] = ' ';
+			//}
+		}
+	}
 }
 
 

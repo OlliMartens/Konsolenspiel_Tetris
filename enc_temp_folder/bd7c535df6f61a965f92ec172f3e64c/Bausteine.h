@@ -77,7 +77,7 @@ void randomForm(int& nextBlock);
 
 void printBlocks(int nextBlock, tetris& tempBlock, int pos1, int pos2);
 
-void rotateBlocks(int nextBlock, tetris& tempBlock, int pos1, int pos2);
+void rotateBlocks(int nextBlock, tetris& tempBlock);
 
 template <class T> void swap(T& a, T& b)
 {

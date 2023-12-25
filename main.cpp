@@ -15,6 +15,7 @@ int main() {
 	noCursor();
 
 	int posA = 12, posB = 0;
+	int nextBlock = 0;
 
 	//***Spielfeld in Bunt*** 
 	while (true)
@@ -22,7 +23,12 @@ int main() {
 		U_square(20, 1, 27, 18);
 		//simple_square(41, 8, 28, 1);
 		//Spielfeldarry in dem U_square printen
-		printBlocks(0, Game, posA, posB);
+
+
+		if (true) {
+			//rotateBlocks(nextBlock,Game);
+		}
+		printBlocks(nextBlock, Game, posA, posB);
 
 		for (int i = 0; i < Game.rows; i++)
 		{

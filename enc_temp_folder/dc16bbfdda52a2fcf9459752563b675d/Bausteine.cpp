@@ -8,28 +8,18 @@ void randomForm(int& nextBlock) {
 	nextBlock = rand() % 6;
 }
 
-void rotateBlocks(int nextBlock, tetris& tempBlock, int pos1, int pos2) {
-	//Löschen des alten Blocks vor dem drehen
-	for (int pos1 = 0; pos1 < 2; pos1++)
-	{
-		for (int pos2 = 0; pos2 < 2; pos2++) {
-			if (tempBlock.blocks[nextBlock][pos1][pos2] == 1) {
-				tempBlock.spielfeld[12 + pos2][pos1] = ' ';
-			}
-		}
-	}
-
+void rotateBlocks(int nextBlock, tetris& tempBlock) {
 	//jede for-Schleife hat ein < 3, da die Blöcke immmer 3x3 groß sind
 
 	//Rotate the matrix about the main diagonal
-	for (int i = 0; i < 2; i++) {
+	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < i; j++)
 			swap(tempBlock.blocks[nextBlock][i][j], tempBlock.blocks[nextBlock][j][i]);
 	}
 
 	//Rotate the matrix about middle column
-	for (int i = 0; i < 2; i++) {
-		for (int j = 0; j < 2; j++) {
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
 			swap(tempBlock.blocks[nextBlock][i][j], tempBlock.blocks[nextBlock][j][3 - j - 1]);
 		}
 	}

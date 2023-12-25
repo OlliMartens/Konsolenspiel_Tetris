@@ -14,8 +14,8 @@ int main() {
 	tetris Game;
 	noCursor();
 
-	int posA = 12, posB = 0;
-	int nextBlock = 0;
+	int posA = 0, posB = 0;
+	int nextBlock = 1;
 
 	//***Spielfeld in Bunt*** 
 	while (true)
@@ -26,7 +26,7 @@ int main() {
 
 
 		if (true) {
-			//rotateBlocks(nextBlock,Game);
+			rotateBlocks(nextBlock,Game, posA, posB);
 		}
 		printBlocks(nextBlock, Game, posA, posB);
 

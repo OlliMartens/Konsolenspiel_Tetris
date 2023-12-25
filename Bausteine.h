@@ -41,26 +41,26 @@ struct tetris{
 		{	//zweiter Block
 		{0,1,0},
 		{0,1,0},
-		{1,1,0}
+		{0,1,0}
 		},
 		{	//dritter Block
 		{0,1,0},
 		{0,1,0},
-		{0,0,0}
+		{1,1,0}
 		},
 		{	//vierter Block
 		{0,1,0},
-		{0,1,0},
-		{0,0,0}
+		{1,1,0},
+		{1,0,0}
 		},
 		{	//fünfter Block
-		{0,1,0},
-		{0,1,0},
+		{1,1,0},
+		{1,1,0},
 		{0,0,0}
 		},
 		{	//sechster Block
 		{0,1,0},
-		{0,1,0},
+		{1,1,0},
 		{0,0,0}
 		}
 	};
@@ -75,11 +75,21 @@ struct tetris{
 /// <param name="status">Status gibt Information darüber, welche Form gerade ausgewählt wurde</param>
 void randomForm(int& nextBlock);
 
+/// <summary>
+/// Schreiben der Blöcke in das Spielfeld -> noch ohne Ausgabe (cout)
+/// </summary>
+/// <param name="nextBlock">aktueller bzw. nächster Block</param>
+/// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
+/// <param name="pos1">Array Koordinate 1</param>
+/// <param name="pos2">Array Koordinate 2</param>
 void printBlocks(int nextBlock, tetris& tempBlock, int pos1, int pos2);
 
+/// <summary>
+/// Funktion zum rotieren der Matrix blocks
+/// </summary>
+/// <param name="nextBlock">aktueller bzw. nächster Block</param>
+/// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
+/// <param name="pos1">Array Koordinate 1</param>
+/// <param name="pos2">Array Koordinate 2</param>
 void rotateBlocks(int nextBlock, tetris& tempBlock, int pos1, int pos2);
 
-template <class T> void swap(T& a, T& b)
-{
-	T c(a); a = b; b = c;
-}

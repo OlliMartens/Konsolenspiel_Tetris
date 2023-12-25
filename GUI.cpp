@@ -12,7 +12,7 @@ void go(int a, int b) {
     SetConsoleCursorPosition(out, cord);
 }
 
-void Color(int y) {
+void color(int y) {
     SetConsoleTextAttribute(out, y);
 }
 
@@ -42,21 +42,21 @@ void noCursor()
      for (int set1 = 0; set1 < height; set1++, Y++)
      {
          go(X, Y);
-         Color(9);
+         color(9);
          cout << char(219); 
          go(X + (width -1), Y); 
-         Color(9);
+         color(9);
          cout << char(219);
          go(X, Y);
          if (set1 == height -1) {
              for (int set2 = 0; set2 < width; set2++) {
-                 Color(9);
+                 color(9);
                  cout << char(223);
                  continue;
              }
          }
          //Frabe auf den Ursprung zurücksetzen
-         Color(7);
+         color(7);
      }
  }
 

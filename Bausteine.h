@@ -39,8 +39,8 @@ struct tetris{
 		{0,0,0}
 		},
 		{	//zweiter Block
-		{0,0,0},
-		{1,1,0},
+		{0,1,0},
+		{0,1,0},
 		{1,1,0}
 		},
 		{	//dritter Block

@@ -35,6 +35,7 @@ int main() {
 			for (int j = 0; j < Game.cols; j++)
 			{
 				//Game.spielfeld[i][j] = '1';
+				color(3);
 				go(i + 21, j + 1);
 				cout << Game.spielfeld[i][j];
 			}

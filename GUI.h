@@ -23,4 +23,6 @@ void color(int y);
 void simpel_Line(int X, int Y, int width, int height);
 void simple_square(int X, int Y, int width, int height, int paint);
 void simple_U(int X, int Y, int width, int height, int paint);
-void around_U(int X, int Y, int width, int height, int paint);
+void highscoreGUI();
+void nextBlockGUI();
+void controlsGUI();

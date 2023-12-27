@@ -28,30 +28,84 @@ void noCursor()
     SetConsoleCursorInfo(out, &info);
 }
 
- void simple_square(int X, int Y, int width, int height){
-  for (int set1 = 0; set1<height; set1++)
-  {
-  go(X, Y); Y++;
-  for (int set2 = 0; set2<width; set2++){ cout << char(223); }cout << endl;
-  }
+ void simple_square(int X, int Y, int width, int height, int paint){
+     for (int set1 = 0; set1 < height; set1++, Y++)
+     {
+         go(X, Y);
+         if (set1 == 0) {
+             for (int i = 0; i < width; i++)
+             {
+                 color(paint);
+                 cout << char(223);
+                 continue;
+             }
+         }
+         go(X, Y);
+         color(paint);
+         cout << char(219);
+         go(X + (width - 1), Y);
+         color(paint);
+         cout << char(219);
+         go(X, Y);
+         if (set1 == height - 1) {
+             for (int set2 = 0; set2 < width; set2++) {
+                 color(paint);
+                 cout << char(223);
+                 continue;
+             }
+         }
+         //Frabe auf den Ursprung zurücksetzen
+         color(7);
+     }
   }
 
+ void simpel_Line(int X, int Y, int width, int height) {
+     for (int set1 = 0; set1 < height; set1++)
+     {
+         go(X, Y); Y++;
+         for (int set2 = 0; set2 < width; set2++) { cout << char(223); }cout << endl;
+     }
+ }
 
- void U_square(int X, int Y, int width, int height)
+
+ void simple_U(int X, int Y, int width, int height, int paint)
  {
      for (int set1 = 0; set1 < height; set1++, Y++)
      {
          go(X, Y);
-         color(9);
+         color(paint);
          cout << char(219); 
          go(X + (width -1), Y); 
-         color(9);
+         color(paint);
          cout << char(219);
          go(X, Y);
          if (set1 == height -1) {
              for (int set2 = 0; set2 < width; set2++) {
-                 color(9);
-                 cout << char(223);
+                 color(paint);
+                 cout << char(219);
+                 continue;
+             }
+         }
+         //Frabe auf den Ursprung zurücksetzen
+         color(7);
+     }
+ }
+
+ void around_U(int X, int Y, int width, int height, int paint)
+ {
+     for (int set1 = 0; set1 < height; set1++, Y++)
+     {
+         go(X, Y);
+         color(paint);
+         cout << char(177);
+         go(X + (width - 1), Y);
+         color(paint);
+         cout << char(177);
+         go(X, Y);
+         if (set1 == height - 1) {
+             for (int set2 = 0; set2 < width; set2++) {
+                 color(paint);
+                 cout << char(177);
                  continue;
              }
          }

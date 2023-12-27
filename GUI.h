@@ -20,5 +20,7 @@ void go(int a, int b);
 void color(int y);
 
 //Funktion definieren
-void simple_square(int X, int Y, int width, int height);
-void U_square(int X, int Y, int width, int height);
+void simpel_Line(int X, int Y, int width, int height);
+void simple_square(int X, int Y, int width, int height, int paint);
+void simple_U(int X, int Y, int width, int height, int paint);
+void around_U(int X, int Y, int width, int height, int paint);

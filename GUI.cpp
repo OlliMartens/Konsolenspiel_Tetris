@@ -94,17 +94,17 @@ void noCursor()
  void highscoreGUI() {
      //Dein Highscore (4 = rot)
      color(0x0c);
-     go(60, 10);
+     go(61, 10);
      cout << "Highscore" << endl;
-     simple_square(60, 11, 20, 8, 4);
+     simple_square(61, 11, 20, 8, 4);
  }
 
  void nextBlockGUI() {
      //Nächster Block (6 = gelb)
      color(0x0e);
-     go(60, 1);
+     go(61, 1);
      cout << "Next Block" << endl;
-     simple_square(60, 2, 20, 8, 6);
+     simple_square(61, 2, 20, 8, 6);
  }
 
  void controlsGUI() {

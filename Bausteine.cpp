@@ -39,9 +39,9 @@ void rotateBlocks(int nextBlock, tetris& tempBlock, int pos1, int pos2) {
 }
 
 void printBlocks(int nextBlock, tetris& tempBlock ,int pos1, int pos2) {
-	for (int pos1 = 0; pos1 < 3; pos1++)
+	for (pos1 = 0; pos1 < 3; pos1++)
 	{
-		for (int pos2 = 0; pos2 < 3; pos2++) {
+		for (pos2 = 0; pos2 < 3; pos2++) {
 			if (tempBlock.blocks[nextBlock][pos1][pos2] == 1) {
 				tempBlock.spielfeld[12 + pos2][pos1] = char(178);
 			}
@@ -49,4 +49,25 @@ void printBlocks(int nextBlock, tetris& tempBlock ,int pos1, int pos2) {
 	}
 }
 
+bool rotateCollision(int nextBlock, tetris& tempBlock, int pos1, int pos2) {
+	bool ok = true;
 
+	for (pos1 = 0; pos1 < 3; pos1++)
+	{
+		for (pos2 = 0; pos2 < 3; pos2++) {
+			if (tempBlock.spielfeld[12 + pos2][pos1] != ' ') {
+				ok = false;
+			}
+			else {
+				ok = true;
+			}
+		}
+	}
+	return ok;
+}
+
+bool controlCollision(int nextBlock, tetris& tempBlock, int pos1, int pos2) {
+	bool ok = true;
+
+	return ok;
+}

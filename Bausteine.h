@@ -2,7 +2,7 @@
 
 struct tetris{
 
-	char spielfeld[24][17] = {
+	char spielfeld[25][17] = {
 		{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
 		{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
 		{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
@@ -27,6 +27,7 @@ struct tetris{
 		{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
 		{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
 		{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
+		{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '}
 	};
 
 	int rows = sizeof(spielfeld) / sizeof(spielfeld[0]);	//Anzahl Spalten (waagerecht)
@@ -93,3 +94,6 @@ void printBlocks(int nextBlock, tetris& tempBlock, int pos1, int pos2);
 /// <param name="pos2">Array Koordinate 2</param>
 void rotateBlocks(int nextBlock, tetris& tempBlock, int pos1, int pos2);
 
+bool rotateCollision(int nextBlock, tetris& tempBlock, int pos1, int pos2);
+
+bool controlCollision(int nextBlock, tetris& tempBlock, int pos1, int pos2);

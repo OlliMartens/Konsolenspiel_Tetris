@@ -17,30 +17,37 @@ int main() {
 	noCursor();
 
 	//Hilfsvariablen
-	int posA = 0, posB = 0;
+	int width = 12, height = 0;
 	int nextBlock = 0;
+
+	//GUI Spielfeld
+		//Spielfeld (9 = blau)
+	simple_U(30, 1, 27, 18, 9);
+	simple_U(29, 1, 29, 18, 9);
+	controlsGUI();
+	highscoreGUI();
+	nextBlockGUI();
+
 
 	//***Spielfeld in Bunt*** 
 	while (true)
 	{
-		//GUI Spielfeld
-		//Spielfeld (9 = blau)
-		simple_U(30, 1, 27, 18, 9);
-		simple_U(29, 1, 29, 18, 9);
-		controlsGUI();
-		highscoreGUI();
-		nextBlockGUI();
-
+		
 		//Wenn keine Kollision
-		if (controlCollision(nextBlock, Game, posA, posB)) {
-		//if rechts links
-		//if fast down
+		//controlCollision(nextBlock, Game, posA, posB)
+		if (true) {
+			//Löschen der alten Position
+			deletePosition(nextBlock, Game, width, height);
+
+			//if rechts links
+			shiftRightLeft(width);
+			//if fast down
 
 
-		//Wenn 'R' (0x52) gedrückt dann rotieren -> Block 5 muss nicht rotiert werden, da Viereck
-		if (nextBlock != 4 && rotateCollision(nextBlock, Game, posA, posB) && GetAsyncKeyState(0x52)) {
-			rotateBlocks(nextBlock, Game, posA, posB);
-		}
+			//Wenn 'R' (0x52) gedrückt dann rotieren -> Block 5 muss nicht rotiert werden, da Viereck
+			if (nextBlock != 4 && rotateCollision(nextBlock, Game, width, height) && GetAsyncKeyState(0x52)) {
+				rotateBlocks(nextBlock, Game, width, height);
+			}
 
 
 
@@ -49,7 +56,7 @@ int main() {
 
 
 		//Spielfeldarry in dem U_square printen
-		printBlocks(nextBlock, Game, posA, posB);
+		printBlocks(nextBlock, Game, width, height);
 
 		for (int i = 0; i < Game.rows; i++)
 		{
@@ -63,7 +70,7 @@ int main() {
 			cout << endl;
 		}
 
-		Sleep(500);
-		system("cls");
+		Sleep(50);
+		//system("cls");
 	}
 }

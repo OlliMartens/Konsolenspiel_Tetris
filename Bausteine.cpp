@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cmath>
+#include <windows.h>
 #include "Bausteine.h"
 
 void randomForm(int& nextBlock) {
@@ -8,17 +8,7 @@ void randomForm(int& nextBlock) {
 	nextBlock = rand() % 6;
 }
 
-void rotateBlocks(int nextBlock, tetris& tempBlock, int pos1, int pos2) {
-	//Löschen des alten Blocks vor dem drehen
-	for (int pos1 = 0; pos1 < 3; pos1++)
-	{
-		for (int pos2 = 0; pos2 < 3; pos2++) {
-			if (tempBlock.blocks[nextBlock][pos1][pos2] == 1) {
-				tempBlock.spielfeld[12 + pos2][pos1] = ' ';
-			}
-		}
-	}
-
+void rotateBlocks(int nextBlock, tetris& tempBlock, int width, int height) {
 	//jede for-Schleife hat ein < 3, da die Blöcke immmer 3x3 groß sind
 	
 	//temporäres Array
@@ -38,24 +28,25 @@ void rotateBlocks(int nextBlock, tetris& tempBlock, int pos1, int pos2) {
 	
 }
 
-void printBlocks(int nextBlock, tetris& tempBlock ,int pos1, int pos2) {
-	for (pos1 = 0; pos1 < 3; pos1++)
+void printBlocks(int nextBlock, tetris& tempBlock, int width, int height) {
+	for (int i = 0; i < 3; i++)
 	{
-		for (pos2 = 0; pos2 < 3; pos2++) {
-			if (tempBlock.blocks[nextBlock][pos1][pos2] == 1) {
-				tempBlock.spielfeld[12 + pos2][pos1] = char(178);
+		for (int j = 0 ; j < 3; j++) {
+			if (tempBlock.blocks[nextBlock][i][j] == 1) {
+				tempBlock.spielfeld[width + j][height + i] = char(178);
 			}
 		}
 	}
 }
 
-bool rotateCollision(int nextBlock, tetris& tempBlock, int pos1, int pos2) {
+bool rotateCollision(int nextBlock, tetris& tempBlock, int width, int height) {
 	bool ok = true;
 
-	for (pos1 = 0; pos1 < 3; pos1++)
+
+	for (int i = 0; i < 3; i++)
 	{
-		for (pos2 = 0; pos2 < 3; pos2++) {
-			if (tempBlock.spielfeld[12 + pos2][pos1] != ' ') {
+		for (int j = 0; j < 3; j++) {
+			if (tempBlock.spielfeld[width + j][height + i] != ' ') {
 				ok = false;
 			}
 			else {
@@ -63,11 +54,40 @@ bool rotateCollision(int nextBlock, tetris& tempBlock, int pos1, int pos2) {
 			}
 		}
 	}
+
+	//Drehen am rand nicht möglich
+	if (width == 23 || width == 0) ok = false;
+
 	return ok;
 }
 
-bool controlCollision(int nextBlock, tetris& tempBlock, int pos1, int pos2) {
+bool controlCollision(int nextBlock, tetris& tempBlock, int width, int height) {
 	bool ok = true;
-
+	
 	return ok;
+}
+
+void shiftRightLeft(int& width) {
+	
+	//shift Right
+	if (GetAsyncKeyState(0x27) && width < 23 ) {
+		width++;
+	}
+
+	//shift Left
+	if (GetAsyncKeyState(0x25) && width > -1) {
+		width--;
+	}
+}
+
+void deletePosition(int nextBlock, tetris& tempBlock, int width, int height) {
+	//Löschen des alten Blocks vor dem drehen
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++) {
+			if (tempBlock.blocks[nextBlock][i][j] == 1) {
+				tempBlock.spielfeld[width + j][height + i] = ' ';
+			}
+		}
+	}
 }

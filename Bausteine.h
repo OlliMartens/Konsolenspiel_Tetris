@@ -81,19 +81,23 @@ void randomForm(int& nextBlock);
 /// </summary>
 /// <param name="nextBlock">aktueller bzw. nächster Block</param>
 /// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
-/// <param name="pos1">Array Koordinate 1</param>
-/// <param name="pos2">Array Koordinate 2</param>
-void printBlocks(int nextBlock, tetris& tempBlock, int pos1, int pos2);
+/// <param name="width">Array Breite ( x-Koordinate)</param>
+/// <param name="height">Array Höhe ( y-Koordinate)</param>
+void printBlocks(int nextBlock, tetris& tempBlock, int width, int height);
 
 /// <summary>
 /// Funktion zum rotieren der Matrix blocks
 /// </summary>
 /// <param name="nextBlock">aktueller bzw. nächster Block</param>
 /// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
-/// <param name="pos1">Array Koordinate 1</param>
-/// <param name="pos2">Array Koordinate 2</param>
-void rotateBlocks(int nextBlock, tetris& tempBlock, int pos1, int pos2);
+/// <param name="width">Array Breite ( x-Koordinate)</param>
+/// <param name="height">Array Höhe ( y-Koordinate)</param>
+void rotateBlocks(int nextBlock, tetris& tempBlock, int width, int height);
 
-bool rotateCollision(int nextBlock, tetris& tempBlock, int pos1, int pos2);
+bool rotateCollision(int nextBlock, tetris& tempBlock, int width, int height);
 
-bool controlCollision(int nextBlock, tetris& tempBlock, int pos1, int pos2);
+bool controlCollision(int nextBlock, tetris& tempBlock, int width, int height);
+
+void shiftRightLeft(int& width);
+
+void deletePosition(int nextBlock, tetris& tempBlock, int width, int height);

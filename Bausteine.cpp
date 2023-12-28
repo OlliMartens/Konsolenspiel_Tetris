@@ -42,22 +42,27 @@ void printBlocks(int nextBlock, tetris& tempBlock, int width, int height) {
 bool rotateCollision(int nextBlock, tetris& tempBlock, int width, int height) {
 	bool ok = true;
 
-
-	for (int i = 0; i < 3; i++)
+	/*for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++) {
-			if (tempBlock.spielfeld[width + j][height + i] != ' ') {
-				ok = false;
-			}
-			else {
-				ok = true;
+			if (tempBlock.blocks[nextBlock][i][j] == 1) {
+				if ((width == 22 && j > 1) || (width == 1 &&  j < 1) || height + i == 17) {
+					ok = false;
+				}
+				else {
+					ok = true;
+				}
+				
 			}
 		}
-	}
+	}*/
+	
 
 	//Drehen am rand nicht möglich
-	if (width == 23 || width == 0) ok = false;
-
+	if (width > 22 || width < 0) ok = false;
+	else {
+		ok = true;
+	}
 	return ok;
 }
 
@@ -69,6 +74,8 @@ bool controlCollision(int nextBlock, tetris& tempBlock, int width, int height) {
 
 void shiftRightLeft(int& width) {
 	
+	// Auf Ausrichtung des Blocks achten
+	// 
 	//shift Right
 	if (GetAsyncKeyState(0x27) && width < 23 ) {
 		width++;

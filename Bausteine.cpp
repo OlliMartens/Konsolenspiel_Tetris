@@ -2,152 +2,89 @@
 #include <windows.h>
 #include "Bausteine.h"
 
-void randomForm(int& nextBlock) {
+void randomForm(tetris& tempblock, int(&aktBlock)[3][3], int& nextBlock) {
+
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			aktBlock[i][j] = tempblock.blocks[nextBlock][i][j];
+		}
+	}
 	
 	srand((unsigned)time(NULL));
 	nextBlock = rand() % 5;
+
 }
 
-void rotateBlocks(int aktBlock, tetris& tempBlock, int width, int height) {
+void rotateBlocks(int(&aktBlock)[3][3], tetris tempBlock, int width, int height) {
 	//jede for-Schleife hat ein < 3, da die Blöcke immmer 3x3 groß sind
 	
 	//temporäres Array
-	int a[1][3][3];
+	int a[3][3];
 
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++)
-			a[0][j][3 - 1 - i] = tempBlock.blocks[aktBlock][i][j];
+			a[j][3 - 1 - i] = aktBlock[i][j];
 	}
 
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 3; j++)
-			tempBlock.blocks[aktBlock][i][j] = a[0][i][j];
+	//Wenn das temporäre Array keine Kollision hat kann es zum aktuellen werden
+	if (isValid(a, tempBlock, width, height)) {
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
+				aktBlock[i][j] = a[i][j];
+		}
 	}
-	
 }
 
-int rotatingStatus(int aktBlock, tetris& tempBlock, int width, int height) {
-	static int  deg = 0;
-	//Die Variable Degree wird bei jedem Aufruf um 1 erhöht (deg + 1 entspricht + 90°)
-	deg++;
-
-	switch (deg) {
-	case 0:
-		break;
-	case 1:
-		rotateBlocks(aktBlock, tempBlock, width, height);
-		break;
-	case 2:
-		rotateBlocks(aktBlock, tempBlock, width, height);
-		break;
-	case 3:
-		rotateBlocks(aktBlock, tempBlock, width, height);
-		break;
-	case 4:
-		rotateBlocks(aktBlock, tempBlock, width, height);
-		deg = 0;
-		break;
-	}
-
-	return deg;
-}
-
-void printBlocks(int aktBlock, tetris& tempBlock, int width, int height) {
+void printBlocks(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0 ; j < 3; j++) {
-			if (tempBlock.blocks[aktBlock][i][j] == 1) {
-				tempBlock.spielfeld[width + j][height + i] = char(178);
+			if (aktBlock[i][j] == 1) {
+				tempBlock.spielfeld[width + i][height + j] = char(178);
 			}
 		}
 	}
 }
 
-int shiftCollision(int aktBlock, tetris& tempBlock, int width, int height, int deg) {
-	//Status ok:
-	// 0 = alles erlaubt
-	// 1 = nur shift right
-	// 2 = nur shift left
-	static int ok = 0;
 
-	switch (aktBlock)
+bool isValid(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
+	for (int i = 0; i < 3; i++)
 	{
-		case 0:	//erster Block
-			switch (deg)
-			{
-				case 0: // 0° bzw. 360°
-					if (width == -1) ok = 1;
-					else if (width == 23) ok = 2;
-					else ok = 0;
-					break;
-				case 1: // 90°
-					if (width == -1) ok = 1;
-					else if (width == 22) ok = 2;
-					else ok = 0;
-					break;
-				case 2: // 180°
-					if (width == -1) ok = 1;
-					else if (width == 23) ok = 2;
-					else ok = 0;
-					break;
-				case 3: // 270°
-					if (width == 0) ok = 1;
-					else if (width == 23) ok = 2;
-					else ok = 0;
-					break;
-			}
-			break;
-		case 1:	//zweiter Block
+		for (int j = 0; j < 3; j++) {
+			if (aktBlock[i][j] == 0) continue;
+			if (width + i - 1 < 0 || width + i - 1 > tempBlock.rows - 2 || height + j < 0 || height + j - 1 > tempBlock.cols - 1)
+				return false;
+			if (tempBlock.spielfeld[width + i][height + j] != ' ')return false;
 
-			break;
-		case 2:	//dritter Block
-
-			break;
-		case 3:	//vierter Block
-		
-			break;
-		case 4: //fünfter Block
-
-			break;
-		case 5: //sechster Block
-
-			break;
-
+		}
 	}
-
-	return ok;
+	return true;
 }
 
-bool controlCollision(int aktBlock, tetris& tempBlock, int width, int height) {
-	bool ok = true;
-	
-	return ok;
-}
-
-void shiftRightLeft(int& width, int ok) {
+void shiftRightLeft(int& width) {
 
 	// Auf Ausrichtung des Blocks achten
 	// 
 	//shift Right
-	if (GetAsyncKeyState(0x27) && (ok == 0 || ok == 1)) {
+	if (GetAsyncKeyState(0x27)) {
 		width++;
 	}
 
 	//shift Left
-	if (GetAsyncKeyState(0x25) && (ok == 0 || ok == 2)) {
+	if (GetAsyncKeyState(0x25)) {
 		width--;
 	}
 }
 
-void deletePosition(int aktBlock, tetris& tempBlock, int width, int height) {
+void deletePosition(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
 	//Löschen des alten Blocks vor dem drehen
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++) {
-			if (tempBlock.blocks[aktBlock][i][j] == 1) {
-				tempBlock.spielfeld[width + j][height + i] = ' ';
+			if (aktBlock[i][j]) {
+				tempBlock.spielfeld[width + i][height + j] = ' ';
 			}
 		}
 	}

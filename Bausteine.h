@@ -26,7 +26,9 @@ struct tetris{
 		{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
 		{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
 		{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
+		{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
 		{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '}
+
 	};
 
 	int rows = sizeof(spielfeld) / sizeof(spielfeld[0]);	//Anzahl Spalten (waagerecht)
@@ -73,7 +75,7 @@ struct tetris{
 /// </summary>
 /// <param name="arrayForm">Übergabe des Spielfeld-Arrays</param>
 /// <param name="status">Status gibt Information darüber, welche Form gerade ausgewählt wurde</param>
-void randomForm(int& nextBlock);
+void randomForm(tetris& tempblock, int(&aktBlock)[3][3], int& nextBlock);
 
 /// <summary>
 /// Schreiben der Blöcke in das Spielfeld -> noch ohne Ausgabe (cout)
@@ -82,7 +84,7 @@ void randomForm(int& nextBlock);
 /// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
 /// <param name="width">Array Breite ( x-Koordinate)</param>
 /// <param name="height">Array Höhe ( y-Koordinate)</param>
-void printBlocks(int aktBlock, tetris& tempBlock, int width, int height);
+void printBlocks(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height);
 
 /// <summary>
 /// Funktion zum rotieren der Matrix blocks
@@ -91,22 +93,10 @@ void printBlocks(int aktBlock, tetris& tempBlock, int width, int height);
 /// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
 /// <param name="width">Array Breite ( x-Koordinate)</param>
 /// <param name="height">Array Höhe ( y-Koordinate)</param>
-void rotateBlocks(int aktBlock, tetris& tempBlock, int width, int height);
+void rotateBlocks(int(&aktBlock)[3][3], tetris tempBlock, int width, int height);
 
-/// <summary>
-/// Gibt an, welchen Rotationsstatus der Block hat
-/// </summary>
-/// <param name="aktBlock">aktueller bzw. nächster Block</param>
-/// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
-/// <param name="width">Array Breite ( x-Koordinate)</param>
-/// <param name="height">Array Höhe ( y-Koordinate)</param>
-/// <returns> Rotationsstatus </returns>
-int rotatingStatus(int aktBlock, tetris& tempBlock, int width, int height);
+void shiftRightLeft(int& width);
 
-int shiftCollision(int aktBlock, tetris& tempBlock, int width, int height, int deg);
+void deletePosition(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height);
 
-bool controlCollision(int aktBlock, tetris& tempBlock, int width, int height);
-
-void shiftRightLeft(int& width, int ok);
-
-void deletePosition(int aktBlock, tetris& tempBlock, int width, int height);
+bool isValid(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height);

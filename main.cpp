@@ -17,8 +17,12 @@ int main() {
 	noCursor();
 
 	//Hilfsvariablen
-	int width = 12, height = 0;
-	int nextBlock = 0;
+	int ok = 0;
+	int width = 11, height = 0, deg = 0;
+	//aktueller und nächster Block
+	int aktBlock = 0, nextBlock = 0;
+	
+
 
 	//GUI Spielfeld
 		//Spielfeld (9 = blau)
@@ -37,26 +41,35 @@ int main() {
 		//controlCollision(nextBlock, Game, posA, posB)
 		if (true) {
 			//Löschen der alten Position
-			deletePosition(nextBlock, Game, width, height);
+			deletePosition(aktBlock, Game, width, height);
 
 			//if rechts links
-			shiftRightLeft(width);
+			ok = shiftCollision(aktBlock, Game, width, height, deg);
+			shiftRightLeft(width, ok);
+
 			//if fast down
 
 
 			//Wenn 'R' (0x52) gedrückt dann rotieren -> Block 5 muss nicht rotiert werden, da Viereck
-			if (nextBlock != 4 && rotateCollision(nextBlock, Game, width, height) && GetAsyncKeyState(0x52)) {
-				rotateBlocks(nextBlock, Game, width, height);
+			if (aktBlock != 4 && GetAsyncKeyState(0x52)) {
+				
+				deg = rotatingStatus(aktBlock, Game, width, height);
 			}
 
-
-
+		}
+		//Wenn Kollision -> setze Block und nicht delete und generiere neuen Block
+		else if (false) {
+			randomForm(aktBlock);
 		}
 
+		go(30, 50);
+		cout << "deg: " << deg <<endl;
+		cout << "width: " << width << endl;
+		cout << "aktBlock: " << aktBlock << endl;
+		cout << "ok: " << ok << endl;
 
-
-		//Spielfeldarry in dem U_square printen
-		printBlocks(nextBlock, Game, width, height);
+		//Spielfeldarry in simple_U printen
+		printBlocks(aktBlock, Game, width, height);
 
 		for (int i = 0; i < Game.rows; i++)
 		{

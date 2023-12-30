@@ -78,25 +78,35 @@ void randomForm(int& nextBlock);
 /// <summary>
 /// Schreiben der Blöcke in das Spielfeld -> noch ohne Ausgabe (cout)
 /// </summary>
-/// <param name="nextBlock">aktueller bzw. nächster Block</param>
+/// <param name="aktBlock">aktueller bzw. nächster Block</param>
 /// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
 /// <param name="width">Array Breite ( x-Koordinate)</param>
 /// <param name="height">Array Höhe ( y-Koordinate)</param>
-void printBlocks(int nextBlock, tetris& tempBlock, int width, int height);
+void printBlocks(int aktBlock, tetris& tempBlock, int width, int height);
 
 /// <summary>
 /// Funktion zum rotieren der Matrix blocks
 /// </summary>
-/// <param name="nextBlock">aktueller bzw. nächster Block</param>
+/// <param name="aktBlock">aktueller bzw. nächster Block</param>
 /// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
 /// <param name="width">Array Breite ( x-Koordinate)</param>
 /// <param name="height">Array Höhe ( y-Koordinate)</param>
-void rotateBlocks(int nextBlock, tetris& tempBlock, int width, int height);
+void rotateBlocks(int aktBlock, tetris& tempBlock, int width, int height);
 
-bool rotateCollision(int nextBlock, tetris& tempBlock, int width, int height);
+/// <summary>
+/// Gibt an, welchen Rotationsstatus der Block hat
+/// </summary>
+/// <param name="aktBlock">aktueller bzw. nächster Block</param>
+/// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
+/// <param name="width">Array Breite ( x-Koordinate)</param>
+/// <param name="height">Array Höhe ( y-Koordinate)</param>
+/// <returns> Rotationsstatus </returns>
+int rotatingStatus(int aktBlock, tetris& tempBlock, int width, int height);
 
-bool controlCollision(int nextBlock, tetris& tempBlock, int width, int height);
+int shiftCollision(int aktBlock, tetris& tempBlock, int width, int height, int deg);
 
-void shiftRightLeft(int& width);
+bool controlCollision(int aktBlock, tetris& tempBlock, int width, int height);
 
-void deletePosition(int nextBlock, tetris& tempBlock, int width, int height);
+void shiftRightLeft(int& width, int ok);
+
+void deletePosition(int aktBlock, tetris& tempBlock, int width, int height);

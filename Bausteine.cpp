@@ -54,26 +54,50 @@ bool isValid(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
 	{
 		for (int j = 0; j < 3; j++) {
 			if (aktBlock[i][j] == 0) continue;
-			if (width + i - 1 < 0 || width + i - 1 > tempBlock.rows - 2 || height + j < 0 || height + j - 1 > tempBlock.cols - 1)
-				return false;
-			if (tempBlock.spielfeld[width + i][height + j] != ' ')return false;
+			if (height + j < 0 || height + j - 1 > tempBlock.cols - 1) return false;
+
+			if (tempBlock.spielfeld[width + i][height + j] != ' ') return false;
 
 		}
 	}
 	return true;
 }
 
-void shiftRightLeft(int& width) {
+int isValidShift(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
+	int ok = 0;
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++) {
+			if (aktBlock[i][j] == 0) continue;
+			if (width + i - 2 < 0) {
+				ok = 1;
+				break;
+			}
+			if (width + i > tempBlock.rows - 2) {
+				ok = 2;
+				break;
+			}
+			if (tempBlock.spielfeld[width + i][height + j] != ' ') {
+				ok = 3;
+				break;
+			}
+			ok = 0;
+		}
+	}
+	return ok;
+}
+
+void shiftRightLeft(int& width, int ok) {
 
 	// Auf Ausrichtung des Blocks achten
 	// 
 	//shift Right
-	if (GetAsyncKeyState(0x27)) {
+	if (GetAsyncKeyState(0x27) && (ok == 0 || ok == 1 )) {
 		width++;
 	}
 
 	//shift Left
-	if (GetAsyncKeyState(0x25)) {
+	if (GetAsyncKeyState(0x25) && (ok == 0 || ok == 2)) {
 		width--;
 	}
 }

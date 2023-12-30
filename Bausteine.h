@@ -95,8 +95,10 @@ void printBlocks(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height)
 /// <param name="height">Array Höhe ( y-Koordinate)</param>
 void rotateBlocks(int(&aktBlock)[3][3], tetris tempBlock, int width, int height);
 
-void shiftRightLeft(int& width);
+void shiftRightLeft(int& width, int ok);
 
 void deletePosition(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height);
 
 bool isValid(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height);
+
+int isValidShift(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height);

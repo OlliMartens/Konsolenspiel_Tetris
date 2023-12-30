@@ -19,6 +19,7 @@ int main() {
 	noCursor();
 	
 	//Hilfsvariablen
+	bool noCollision = true;
 	int ok = 0;
 	int width = 11, height = 0, deg = 0;
 	//aktueller und nächster Block
@@ -43,17 +44,18 @@ int main() {
 	//***Spielfeld in Bunt*** 
 	while (true)
 	{
-		
+		//
 		//Wenn keine Kollision
-		
-		if (true) {
+		noCollision =  isValid(aktBlock, Game, width, height);
+
+		if (noCollision) {
 			//Löschen der alten Position
 			deletePosition(aktBlock, Game, width, height);
 
 			//if rechts links
-			if (isValid(aktBlock, Game, width, height)) {
-				shiftRightLeft(width);
-			}
+			ok = isValidShift(aktBlock, Game, width, height);
+			shiftRightLeft(width, ok);
+
 
 			//if fast down
 

@@ -49,13 +49,12 @@ void printBlocks(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height)
 }
 
 
-bool isValid(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
+int isValid(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++) {
 			if (aktBlock[i][j] == 0) continue;
-			if (height + j < 0 || height + j - 1 > tempBlock.cols - 1) return false;
-
+			if (height + j < 0 || height + j - 1 > tempBlock.cols - 2) return false;
 			if (tempBlock.spielfeld[width + i][height + j] != ' ') return false;
 
 		}
@@ -64,27 +63,23 @@ bool isValid(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
 }
 
 int isValidShift(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
-	int ok = 0;
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++) {
 			if (aktBlock[i][j] == 0) continue;
-			if (width + i - 2 < 0) {
-				ok = 1;
-				break;
+			if (width + i - 1 < 0) {
+				return 1;
 			}
 			if (width + i > tempBlock.rows - 2) {
-				ok = 2;
-				break;
+				return 2;
 			}
 			if (tempBlock.spielfeld[width + i][height + j] != ' ') {
-				ok = 3;
-				break;
+				return 3;
 			}
-			ok = 0;
 		}
+
 	}
-	return ok;
+	return 0;
 }
 
 void shiftRightLeft(int& width, int ok) {

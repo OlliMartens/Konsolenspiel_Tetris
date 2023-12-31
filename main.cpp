@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <conio.h>	
 #include <string>
+//#include <time.h>
 #include "Bausteine.h"
 #include "GUI.h"
 
@@ -20,8 +21,8 @@ int main() {
 	
 	//Hilfsvariablen
 	bool noCollision = true;
-	int ok = 0;
-	int width = 11, height = 0, deg = 0;
+	int ok = 0, deg = 0;
+	int width = 9, height = 0, down = 0;
 	//aktueller und nächster Block
 	int nextBlock = 0;
 
@@ -31,8 +32,8 @@ int main() {
 
 	//GUI Spielfeld
 		//Spielfeld (9 = blau)
-	simple_U(30, 1, 27, 18, 9);
-	simple_U(29, 1, 29, 18, 9);
+	simple_U(30, 1, 22, 21, 9);
+	simple_U(29, 1, 24, 21, 9);
 	controlsGUI();
 	highscoreGUI();
 	nextBlockGUI();
@@ -44,37 +45,40 @@ int main() {
 	//***Spielfeld in Bunt*** 
 	while (true)
 	{
-		//
+		deletePosition(aktBlock, Game, width, height);
+		height++;
+		noCollision = isValid(aktBlock, Game, width, height);
+		
 		//Wenn keine Kollision
-		noCollision =  isValid(aktBlock, Game, width, height);
-
 		if (noCollision) {
 			//Löschen der alten Position
-			deletePosition(aktBlock, Game, width, height);
-
+			
 			//if rechts links
 			ok = isValidShift(aktBlock, Game, width, height);
 			shiftRightLeft(width, ok);
 
 
 			//if fast down
-
+			if (GetAsyncKeyState(0x28)) down = 150;
+			else down = 0;
 
 			//Wenn 'R' (0x52) gedrückt dann rotieren -> Block 5 muss nicht rotiert werden, da Viereck
 			if (GetAsyncKeyState(0x52)) {
 				rotateBlocks(aktBlock, Game, width, height);
 			}
-
 		}
 		//Wenn Kollision -> setze Block und nicht delete und generiere neuen Block
-		else if (false) {
-			
-		}
+		else if (!noCollision) {
+			//Wenn bei height++ eine Kollision entstehen würde printe den Block an der letzten Position ohne Kollision
+			//printBlocks ist hier auch wichtig, da nach randomForm ein ganz neuer Block generiert wird
+			height--;
+			printBlocks(aktBlock, Game, width, height);
 
-		go(30, 50);
-		cout << "deg: " << deg <<endl;
-		cout << "width: " << width << endl;
-		cout << "ok: " << ok << endl;
+			//Start Position
+			height = 0;
+			//Neuer Block
+			randomForm(Game, aktBlock, nextBlock);
+		}
 
 		//Spielfeldarry in simple_U printen
 		printBlocks(aktBlock, Game, width, height);
@@ -91,7 +95,7 @@ int main() {
 			cout << endl;
 		}
 
-		Sleep(50);
+		Sleep(200-down);
 		//system("cls");
 	}
 }

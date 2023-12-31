@@ -94,54 +94,54 @@ void noCursor()
  void highscoreGUI() {
      //Dein Highscore (4 = rot)
      color(0x0c);
-     go(61, 10);
+     go(61, 13);
      cout << "Highscore" << endl;
-     simple_square(61, 11, 20, 8, 4);
+     simple_square(61, 14, 20, 8, 4);
  }
 
  void nextBlockGUI() {
      //Nächster Block (6 = gelb)
      color(0x0e);
-     go(61, 1);
+     go(61, 4);
      cout << "Next Block" << endl;
-     simple_square(61, 2, 20, 8, 6);
+     simple_square(61, 5, 20, 8, 6);
  }
 
  void controlsGUI() {
      //Controls (5 = violett)
      color(0x0d);
-     go(1, 1);
+     go(1, 4);
      cout << "Controls" << endl;
-     simple_square(1, 2, 25, 17, 5);
+     simple_square(1, 5, 25, 17, 5);
 
      //Pfeile rechts und links
-     go(3, 3);
-     cout << "Move left & right: " << endl;
-     go(3, 4);
-     cout << char(218) << char(196) << char(196) << char(196) << char(196) << char(191) << " " << char(218) << char(196) << char(196) << char(196) << char(196) << char(191);
-     go(3, 5);
-     cout << char(179) << " <- " << char(179) << " " << char(179) << " -> " << char(179);
      go(3, 6);
+     cout << "Move left & right: " << endl;
+     go(3, 7);
+     cout << char(218) << char(196) << char(196) << char(196) << char(196) << char(191) << " " << char(218) << char(196) << char(196) << char(196) << char(196) << char(191);
+     go(3, 8);
+     cout << char(179) << " <- " << char(179) << " " << char(179) << " -> " << char(179);
+     go(3, 9);
      cout  << char(192) << char(196) << char(196) << char(196) << char(196) << char(217) << " " << char(192) << char(196) << char(196) << char(196) << char(196) << char(217);
 
      //Schnell nach unten
-     go(3, 7);
-     cout << "Move down faster: " << endl;
-     go(3, 8);
-     cout << char(218) << char(196) << char(196) << char(196) << char(196) << char(191);
-     go(3, 9);
-     cout << char(179) << " " << char(92) << "/ " << char(179);
      go(3, 10);
+     cout << "Move down faster: " << endl;
+     go(3, 11);
+     cout << char(218) << char(196) << char(196) << char(196) << char(196) << char(191);
+     go(3, 12);
+     cout << char(179) << " " << char(92) << "/ " << char(179);
+     go(3, 13);
      cout << char(192) << char(196) << char(196) << char(196) << char(196) << char(217);
 
      //Bauteil drehen
-     go(3, 11);
-     cout << "Rotate component: " << endl;
-     go(3, 12);
-     cout << char(218) << char(196) << char(196) << char(196) << char(196) << char(191);
-     go(3, 13);
-     cout << char(179) << " R  " << char(179);
      go(3, 14);
+     cout << "Rotate component: " << endl;
+     go(3, 15);
+     cout << char(218) << char(196) << char(196) << char(196) << char(196) << char(191);
+     go(3, 16);
+     cout << char(179) << " R  " << char(179);
+     go(3, 17);
      cout << char(192) << char(196) << char(196) << char(196) << char(196) << char(217);
  }
 

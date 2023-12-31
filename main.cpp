@@ -18,29 +18,32 @@ int main() {
 	
 	//Cursor ausblenden
 	noCursor();
-	
-	//Hilfsvariablen
-	bool noCollision = true;
-	int ok = 0, deg = 0;
-	int width = 9, height = 0, down = 0;
-	//aktueller und nächster Block
-	int nextBlock = 0;
 
-	//Array Übergabe
+	//Fehlermeldungen
+	bool noCollision = true;
+	int ok = 0;
+	//Breite, Höhe, Fallgeschw.
+	int width = 9, height = 0, down = 0;
+	//nächster Block, nächste Blockfrabe, aktuelle Farbe
+	int nextBlock = 0, nextColor = 0, aktColor = 0;
+
+	//Array Übergabe aktueller Block
 	int aktBlock[3][3];
 
 
 	//GUI Spielfeld
-		//Spielfeld (9 = blau)
+	//Spielfeld (9 = blau)
 	simple_U(30, 1, 22, 21, 9);
 	simple_U(29, 1, 24, 21, 9);
 	controlsGUI();
 	highscoreGUI();
 	nextBlockGUI();
 
-	//Erzeugen des Startblocks
+	//Erzeugen des Startblocks + Farbe
 	nextBlock = rand() % 5;
-	randomForm(Game, aktBlock, nextBlock);
+	aktColor = rand() % 10;
+	if (color == 0) aktColor = 1;
+	randomForm(Game, aktBlock, nextBlock, nextColor);
 
 	//***Spielfeld in Bunt*** 
 	while (true)
@@ -74,28 +77,30 @@ int main() {
 			height--;
 			printBlocks(aktBlock, Game, width, height);
 
+			//Hier auf Game over prüfen
+				
 			//Start Position
 			height = 0;
+			aktColor = nextColor;
 			//Neuer Block
-			randomForm(Game, aktBlock, nextBlock);
+			randomForm(Game, aktBlock, nextBlock, nextColor);
 		}
 
 		//Spielfeldarry in simple_U printen
 		printBlocks(aktBlock, Game, width, height);
 
 		for (int i = 0; i < Game.rows; i++)
-		{
+		 {
 			for (int j = 0; j < Game.cols; j++)
 			{
-				//Game.spielfeld[i][j] = '1';
-				color(3);
+				color(aktColor);
 				go(i + 31, j +1);
 				cout << Game.spielfeld[i][j];
 			}
 			cout << endl;
 		}
 
+		//Fallgeschwindigkeit
 		Sleep(200-down);
-		//system("cls");
 	}
 }

@@ -64,13 +64,14 @@ struct tetris{
 
 };
 
-
 /// <summary>
-/// Zufällige Auswahl welche Form gerade auf dem Spielfeld erscheint 
+/// Zufällige Auswahl welche Form gerade auf dem Spielfeld erscheint
 /// </summary>
-/// <param name="arrayForm">Übergabe des Spielfeld-Arrays</param>
-/// <param name="status">Status gibt Information darüber, welche Form gerade ausgewählt wurde</param>
-void randomForm(tetris& tempblock, int(&aktBlock)[3][3], int& nextBlock);
+/// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
+/// <param name="aktBlock">aktueller bzw. nächster Block</param>
+/// <param name="nextBlock"> nächster Block </param>
+/// <param name="color"> zufällige Frabe des Blocks </param>
+void randomForm(tetris& tempblock, int(&aktBlock)[3][3], int& nextBlock, int& color);
 
 /// <summary>
 /// Schreiben der Blöcke in das Spielfeld -> noch ohne Ausgabe (cout)
@@ -90,10 +91,38 @@ void printBlocks(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height)
 /// <param name="height">Array Höhe ( y-Koordinate)</param>
 void rotateBlocks(int(&aktBlock)[3][3], tetris tempBlock, int width, int height);
 
+/// <summary>
+/// Block nach links und rechts bewegen
+/// </summary>
+/// <param name="width">Array Breite ( x-Koordinate)</param>
+/// <param name="ok"> Fehlermeldung ist shift möglich </param>
 void shiftRightLeft(int& width, int ok);
 
+/// <summary>
+/// Löschen des alten Blocks
+/// </summary>
+/// <param name="aktBlock">aktueller bzw. nächster Block</param>
+/// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
+/// <param name="width">Array Breite ( x-Koordinate)</param>
+/// <param name="height">Array Höhe ( y-Koordinate)</param>
 void deletePosition(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height);
 
-int isValid(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height);
+/// <summary>
+/// Überprüft, ob eine vertikale Kollision besteht
+/// </summary>
+/// <param name="aktBlock">aktueller bzw. nächster Block</param>
+/// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
+/// <param name="width">Array Breite ( x-Koordinate)</param>
+/// <param name="height">Array Höhe ( y-Koordinate)</param>
+/// <returns> Fehlermeldung für Kollision</returns>
+bool isValid(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height);
 
+/// <summary>
+/// Überprüft, ob eine horizontale Kollision besteht
+/// </summary>
+/// <param name="aktBlock">aktueller bzw. nächster Block</param>
+/// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
+/// <param name="width">Array Breite ( x-Koordinate)</param>
+/// <param name="height">Array Höhe ( y-Koordinate)</param>
+/// <returns> Fehlermeldung für Kollision bei Shift </returns>
 int isValidShift(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height);

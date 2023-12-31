@@ -2,7 +2,7 @@
 #include <windows.h>
 #include "Bausteine.h"
 
-void randomForm(tetris& tempblock, int(&aktBlock)[3][3], int& nextBlock) {
+void randomForm(tetris& tempblock, int(&aktBlock)[3][3], int& nextBlock, int& color) {
 
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
@@ -10,9 +10,12 @@ void randomForm(tetris& tempblock, int(&aktBlock)[3][3], int& nextBlock) {
 		}
 	}
 	
+	//zufälliger Block
 	srand((unsigned)time(NULL));
-	nextBlock = rand() % 5;
-
+	nextBlock = rand() % 6;
+	//zufällige Blockfarbe
+	color = rand() % 10;
+	if (color == 0) color = 1;
 }
 
 void rotateBlocks(int(&aktBlock)[3][3], tetris tempBlock, int width, int height) {
@@ -49,7 +52,7 @@ void printBlocks(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height)
 }
 
 
-int isValid(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
+bool isValid(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++) {
@@ -73,7 +76,7 @@ int isValidShift(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height)
 			if (width + i > tempBlock.rows - 2) {
 				return 2;
 			}
-			if (tempBlock.spielfeld[width + i][height + j] != ' ') {
+			if (tempBlock.spielfeld[width + i + 1][height + j] != ' ') {
 				return 3;
 			}
 		}

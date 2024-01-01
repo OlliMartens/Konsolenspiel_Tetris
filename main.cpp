@@ -2,7 +2,6 @@
 #include <windows.h>
 #include <conio.h>	
 #include <string>
-//#include <time.h>
 #include "Bausteine.h"
 #include "GUI.h"
 
@@ -43,7 +42,7 @@ int main() {
 	nextBlock = rand() % 5;
 	aktColor = rand() % 10;
 	if (color == 0) aktColor = 1;
-	randomForm(Game, aktBlock, nextBlock, nextColor);
+	randomBlock(Game, aktBlock, nextBlock, nextColor);
 
 	//***Spielfeld in Bunt*** 
 	while (true)
@@ -73,22 +72,29 @@ int main() {
 		//Wenn Kollision -> setze Block und nicht delete und generiere neuen Block
 		else if (!noCollision) {
 			//Wenn bei height++ eine Kollision entstehen würde printe den Block an der letzten Position ohne Kollision
-			//printBlocks ist hier auch wichtig, da nach randomForm ein ganz neuer Block generiert wird
+			//printBlocks ist hier auch wichtig, da nach randomBlock ein ganz neuer Block generiert wird
 			height--;
 			printBlocks(aktBlock, Game, width, height);
 
-			//Hier auf Game over prüfen
-				
+			//Prüfen auf Game over
+			if (gameOver(Game)) {
+				system("cls");
+				break;
+			}
+			//Prüfen auf Reihe vollständig
+			int gamePoints = points(Game);
+
 			//Start Position
 			height = 0;
+			int width = 9;
 			aktColor = nextColor;
 			//Neuer Block
-			randomForm(Game, aktBlock, nextBlock, nextColor);
+			randomBlock(Game, aktBlock, nextBlock, nextColor);
 		}
 
 		//Spielfeldarry in simple_U printen
 		printBlocks(aktBlock, Game, width, height);
-
+		showNextBlock(nextBlock, Game);
 		for (int i = 0; i < Game.rows; i++)
 		 {
 			for (int j = 0; j < Game.cols; j++)

@@ -71,7 +71,7 @@ struct tetris{
 /// <param name="aktBlock">aktueller bzw. nächster Block</param>
 /// <param name="nextBlock"> nächster Block </param>
 /// <param name="color"> zufällige Frabe des Blocks </param>
-void randomForm(tetris& tempblock, int(&aktBlock)[3][3], int& nextBlock, int& color);
+void randomBlock(tetris& tempblock, int(&aktBlock)[3][3], int& nextBlock, int& color);
 
 /// <summary>
 /// Schreiben der Blöcke in das Spielfeld -> noch ohne Ausgabe (cout)
@@ -126,3 +126,7 @@ bool isValid(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height);
 /// <param name="height">Array Höhe ( y-Koordinate)</param>
 /// <returns> Fehlermeldung für Kollision bei Shift </returns>
 int isValidShift(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height);
+
+bool gameOver(tetris& tempBlock);
+
+int points(tetris& tempBlock);

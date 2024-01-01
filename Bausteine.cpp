@@ -2,7 +2,7 @@
 #include <windows.h>
 #include "Bausteine.h"
 
-void randomForm(tetris& tempblock, int(&aktBlock)[3][3], int& nextBlock, int& color) {
+void randomBlock(tetris& tempblock, int(&aktBlock)[3][3], int& nextBlock, int& color) {
 
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
@@ -66,6 +66,9 @@ bool isValid(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
 }
 
 int isValidShift(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
+	// 0 = shiften in beide Richtungen erlaubt
+	// 1 = shiften nur nach rechts erlaubt
+	// 2 = shiften nur nach links erlaubt
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++) {
@@ -86,9 +89,6 @@ int isValidShift(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height)
 }
 
 void shiftRightLeft(int& width, int ok) {
-
-	// Auf Ausrichtung des Blocks achten
-	// 
 	//shift Right
 	if (GetAsyncKeyState(0x27) && (ok == 0 || ok == 1 )) {
 		width++;
@@ -110,4 +110,46 @@ void deletePosition(int(&aktBlock)[3][3], tetris& tempBlock, int width, int heig
 			}
 		}
 	}
+}
+
+bool gameOver(tetris& tempBlock) {
+	static int count = 0;
+	for (int i = 0; i < tempBlock.rows; i++)
+	{
+		for (int j = 0; j < tempBlock.cols; j++)
+		{
+			if (tempBlock.spielfeld[i][j] != ' ') count++;
+			if (count == 20) return true;
+			
+		}
+		count = 0;
+	}
+	return false;
+}
+
+int points(tetris& tempBlock) {
+	static int count = 0;
+	static int points = 0;
+	for (int i = 0; i < tempBlock.cols; i++)
+	{
+		for (int j = 0; j < tempBlock.rows; j++)
+		{
+			if (tempBlock.spielfeld[j][i] != ' ') count++;
+			if (count == 20) {
+				points = points + 80;
+				for (int k = 0; k < tempBlock.rows; k++)
+				{
+					tempBlock.spielfeld[k][i] = '=';
+					Sleep(10);
+				}
+				for (int k = 0; k < tempBlock.rows; k++)
+				{
+					tempBlock.spielfeld[k][i] = ' ';
+				}
+			}
+
+		}
+		count = 0;
+	}
+	return points;
 }

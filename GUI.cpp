@@ -1,5 +1,6 @@
 #include <iostream>  
 #include <Windows.h>  
+#include "Bausteine.h"
 
 using namespace std;
 
@@ -143,6 +144,26 @@ void noCursor()
      cout << char(179) << " R  " << char(179);
      go(3, 17);
      cout << char(192) << char(196) << char(196) << char(196) << char(196) << char(217);
+ }
+
+ void showNextBlock(int nextBlock, tetris& tempBlock) {
+
+     for (int i = 0; i < 3; i++)
+     {
+         for (int j = 0; j < 3; j++)
+         {
+             color(0x0f);
+             go(i + 70, j + 7);
+             if (tempBlock.blocks[nextBlock][i][j] == 1) {
+                 cout << char(178);
+             }
+             else {
+                 //löschen der Char
+                 cout << " ";
+             }
+         }
+         cout << endl;
+     }
  }
 
 

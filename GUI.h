@@ -62,3 +62,6 @@ void nextBlockGUI();
 /// Einblenden des Controls-Fensters
 /// </summary>
 void controlsGUI();
+
+
+void showNextBlock(int nextBlock, tetris& tempBlock);

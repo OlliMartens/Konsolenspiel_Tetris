@@ -129,4 +129,4 @@ int isValidShift(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height)
 
 bool gameOver(tetris& tempBlock);
 
-int points(tetris& tempBlock);
+int rowCompleted(tetris& tempBlock);

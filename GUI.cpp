@@ -60,15 +60,6 @@ void noCursor()
      }
   }
 
- void simpel_Line(int X, int Y, int width, int height) {
-     for (int set1 = 0; set1 < height; set1++)
-     {
-         go(X, Y); Y++;
-         for (int set2 = 0; set2 < width; set2++) { cout << char(223); }cout << endl;
-     }
- }
-
-
  void simple_U(int X, int Y, int width, int height, int paint)
  {
      for (int set1 = 0; set1 < height; set1++, Y++)
@@ -166,6 +157,16 @@ void noCursor()
      }
  }
 
+ void showPoints(int points, tetris& tempBlock) {
+     color(0x0c);
+     go(65, 16);
+     cout << "Your current";
+     go(65, 17);
+     cout << " Highscore: ";
+     go(70, 19);
+     cout << points;
+     color(0x0f);
+ }
 
  //Quellen:
  // https://mycodecollection.blogspot.com/2015/01/c-console-basic-graphic-techniques.html

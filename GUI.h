@@ -17,17 +17,6 @@ void go(int a, int b);
 /// <param name="y"> Farbcode </param>
 void color(int y);
 
-//Funktion definieren
-
-/// <summary>
-/// Einfache Linie aus char(219)
-/// </summary>
-/// <param name="X"> X-Koordinate für go </param>
-/// <param name="Y"> Y-Koordinate für go </param>
-/// <param name="width"> Breite </param>
-/// <param name="height"> Höhe </param>
-void simpel_Line(int X, int Y, int width, int height);
-
 /// <summary>
 /// Einfaches Quadrat aus char(219)
 /// </summary>
@@ -65,3 +54,5 @@ void controlsGUI();
 
 
 void showNextBlock(int nextBlock, tetris& tempBlock);
+
+void showPoints(int points, tetris& tempBlock);

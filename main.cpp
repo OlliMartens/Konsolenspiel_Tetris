@@ -29,6 +29,8 @@ int main() {
 	//Array Übergabe aktueller Block
 	int aktBlock[3][3];
 
+	//Aktuelle Punkte
+	int points = 0;
 
 	//GUI Spielfeld
 	//Spielfeld (9 = blau)
@@ -81,9 +83,9 @@ int main() {
 				system("cls");
 				break;
 			}
-			//Prüfen auf Reihe vollständig
-			int gamePoints = points(Game);
-
+			//Prüfen auf Reihe vollständig (40Pkt für jeden gesetzten Block)
+			points = points + rowCompleted(Game) + 40;
+			
 			//Start Position
 			height = 0;
 			int width = 9;
@@ -92,9 +94,10 @@ int main() {
 			randomBlock(Game, aktBlock, nextBlock, nextColor);
 		}
 
-		//Spielfeldarry in simple_U printen
+		//Ausgabe der beweglichen Elemente
 		printBlocks(aktBlock, Game, width, height);
 		showNextBlock(nextBlock, Game);
+		showPoints(points, Game);
 		for (int i = 0; i < Game.rows; i++)
 		 {
 			for (int j = 0; j < Game.cols; j++)

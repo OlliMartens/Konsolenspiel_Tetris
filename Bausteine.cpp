@@ -127,9 +127,10 @@ bool gameOver(tetris& tempBlock) {
 	return false;
 }
 
-int points(tetris& tempBlock) {
+int rowCompleted(tetris& tempBlock) {
 	static int count = 0;
 	static int points = 0;
+	points = 0;
 	for (int i = 0; i < tempBlock.cols; i++)
 	{
 		for (int j = 0; j < tempBlock.rows; j++)
@@ -137,15 +138,17 @@ int points(tetris& tempBlock) {
 			if (tempBlock.spielfeld[j][i] != ' ') count++;
 			if (count == 20) {
 				points = points + 80;
+				//Punkte anders zählen, wenn mehrere Reihen voll sind
 				for (int k = 0; k < tempBlock.rows; k++)
 				{
 					tempBlock.spielfeld[k][i] = '=';
-					Sleep(10);
+					Sleep(20);
 				}
 				for (int k = 0; k < tempBlock.rows; k++)
 				{
 					tempBlock.spielfeld[k][i] = ' ';
 				}
+				//Funktion um alle Blöcke nach Unten zu setzen
 			}
 
 		}
@@ -153,3 +156,5 @@ int points(tetris& tempBlock) {
 	}
 	return points;
 }
+
+

@@ -113,16 +113,10 @@ void deletePosition(int(&aktBlock)[3][3], tetris& tempBlock, int width, int heig
 }
 
 bool gameOver(tetris& tempBlock) {
-	static int count = 0;
+	//Wenn in der letzten Reihe ein Block plaziert wurde = Game over
 	for (int i = 0; i < tempBlock.rows; i++)
 	{
-		for (int j = 0; j < tempBlock.cols; j++)
-		{
-			if (tempBlock.spielfeld[i][j] != ' ') count++;
-			if (count == 20) return true;
-			
-		}
-		count = 0;
+			if (tempBlock.spielfeld[i][0] != ' ') return true;
 	}
 	return false;
 }
@@ -155,6 +149,10 @@ int rowCompleted(tetris& tempBlock) {
 		count = 0;
 	}
 	return points;
+}
+
+void allBlocksDown(tetris& tempBlock) {
+
 }
 
 

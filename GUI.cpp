@@ -6,14 +6,14 @@ using namespace std;
 
 HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
 
-void go(int a, int b) {
+void go(int a, int b) { //Cursor an eine bestimmte Position 
     COORD cord;
     cord.X = a;
     cord.Y = b;
     SetConsoleCursorPosition(out, cord);
 }
 
-void color(int y) {
+void color(int y) { //Farbe der Schrift/Hintergrund ändern 
     SetConsoleTextAttribute(out, y);
 }
 

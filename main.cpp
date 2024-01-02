@@ -73,18 +73,24 @@ int main() {
 		}
 		//Wenn Kollision -> setze Block und nicht delete und generiere neuen Block
 		else if (!noCollision) {
+
 			//Wenn bei height++ eine Kollision entstehen würde printe den Block an der letzten Position ohne Kollision
 			//printBlocks ist hier auch wichtig, da nach randomBlock ein ganz neuer Block generiert wird
 			height--;
 			printBlocks(aktBlock, Game, width, height);
+
 
 			//Prüfen auf Game over
 			if (gameOver(Game)) {
 				system("cls");
 				break;
 			}
-			//Prüfen auf Reihe vollständig (40Pkt für jeden gesetzten Block)
-			points = points + rowCompleted(Game) + 40;
+
+			
+
+			
+			//Prüfen auf Reihe vollständig (8 Pkt für jeden gesetzten Block)
+			points = points + rowCompleted(Game) + 8;
 			
 			//Start Position
 			height = 0;

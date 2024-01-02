@@ -157,14 +157,19 @@ void noCursor()
      }
  }
 
- void showPoints(int points, tetris& tempBlock) {
-     color(0x0c);
-     go(65, 16);
+ void showPoints(int points, tetris& tempBlock, int numBlocks) {
+     color(1);
+     go(65, 15);
      cout << "Your current";
-     go(65, 17);
+     go(65, 16);
      cout << " Highscore: ";
-     go(70, 19);
+     go(70, 17);
      cout << points;
+     color(0x0d);
+     go(64, 18);
+     cout << "Placed Blocks:";
+     go(70, 19);
+     cout << numBlocks;
      color(0x0f);
  }
 

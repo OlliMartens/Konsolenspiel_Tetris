@@ -127,10 +127,35 @@ bool isValid(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height);
 /// <returns> Fehlermeldung für Kollision bei Shift </returns>
 int isValidShift(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height);
 
+/// <summary>
+/// Gibt den Status wieder, ob Game Over true oder false ist
+/// </summary>
+/// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
+/// <returns>Status Gamer Over</returns>
 bool gameOver(tetris& tempBlock);
 
+/// <summary>
+/// Überprüfung, ob eine Reihe Komplett ist und anschließende Punkte ausgabe
+/// </summary>
+/// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
+/// <returns> Wiedergabe der Punkte </returns>
 int rowCompleted(tetris& tempBlock);
 
+/// <summary>
+/// Alle Elemente auf dem Spielfeld um 1 nach unten verschieben
+/// </summary>
+/// <param name="spielfeld"> Übergabe des Spielfeld mit c.b.r. </param>
 void shiftElementsDown(char(&spielfeld)[ROWS][COLS]);
 
+/// <summary>
+/// Ausgabe des Spielfeld auf der Konsole
+/// </summary>
+/// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
 void printField(tetris& tempBlock);
+
+/// <summary>
+/// Erhöhen des Spieltempos
+/// </summary>
+/// <param name="rounds"> gezählte Runde </param>
+/// <param name="speed"> änderbares Tempo c.b.r.</param>
+void speedUp(int rounds, int& speed);

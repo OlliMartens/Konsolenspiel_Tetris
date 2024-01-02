@@ -70,8 +70,10 @@ bool isValid(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
 
 int isValidShift(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
 	// 0 = shiften in beide Richtungen erlaubt
-	// 1 = shiften nur nach rechts erlaubt
-	// 2 = shiften nur nach links erlaubt
+	// 1 = shiften nur nach rechts erlaubt (Spielfeldrand links)
+	// 2 = shiften nur nach links erlaubt (Spielfeldrand rechts)
+	// 3 = shiften nur nach links erlaubt (anderer Block rechts)
+	// 4 = shiften nur nach rechts erlaubt (anderer Block links)
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++) {
@@ -130,6 +132,8 @@ bool gameOver(tetris& tempBlock) {
 int rowCompleted(tetris& tempBlock) {
 	static int count = 0;
 	static int points = 0;
+	static int lineCount = 0;
+	//zurücksetzen der Punkte
 	points = 0;
 	for (int i = 0; i < COLS; i++)
 	{
@@ -137,7 +141,6 @@ int rowCompleted(tetris& tempBlock) {
 		{
 			if (tempBlock.spielfeld[j][i] != ' ') count++;
 			if (count == 20) {
-				points = points + 80;
 				//Punkte anders zählen, wenn mehrere Reihen voll sind
 				for (int k = 0; k < ROWS; k++)
 				{
@@ -146,11 +149,30 @@ int rowCompleted(tetris& tempBlock) {
 				printField(tempBlock);
 				Sleep(500);
 				shiftElementsDown(tempBlock.spielfeld);
+				lineCount++;
 			}
 
 		}
 		count = 0;
 	}
+	//Punktezählsystem
+	switch (lineCount)
+	{
+	case 0:
+		points = 0;
+		break;
+	case 1:
+		points = 40;
+		break;
+	case 2:
+		points = 100;
+		break;
+	case 3:
+		points = 300;
+		break;
+	}
+	//zurücksetzen von lineCount
+	lineCount = 0;
 	return points;
 }
 
@@ -175,4 +197,12 @@ void printField(tetris& tempBlock){
 		}
 		cout << endl;
 	}
+}
+
+void speedUp(int rounds, int& speed) {
+	if (rounds <= 30) speed = 0;
+	else if(rounds>30)speed = 40;
+	else if(rounds>60)speed = 60;
+	else if(rounds>90)speed = 95;
+
 }

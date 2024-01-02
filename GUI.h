@@ -52,7 +52,17 @@ void nextBlockGUI();
 /// </summary>
 void controlsGUI();
 
-
+/// <summary>
+/// Anzeige des nächsten erscheinenden Blocks
+/// </summary>
+/// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
+/// <param name="nextBlock"> nächster Block </param>
 void showNextBlock(int nextBlock, tetris& tempBlock);
 
-void showPoints(int points, tetris& tempBlock);
+/// <summary>
+/// Anzeige der aktuellen Punkte
+/// </summary>
+/// <param name="points"> Übergabe der Punkte </param>
+/// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
+/// <param name="numBlocks"> numBlocks entspricht der Anzahl an Plaziertes Blöcken </param>
+void showPoints(int points, tetris& tempBlock, int numBlocks);

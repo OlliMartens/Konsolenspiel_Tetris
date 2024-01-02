@@ -19,8 +19,8 @@ int main() {
 	//Fehlermeldungen
 	bool noCollision = true;
 	int ok = 0;
-	//Breite, Höhe, Fallgeschw.
-	int width = 9, height = 0, down = 0;
+	//Breite, Höhe, Fallgeschw., Fallgeschw.-Änderung, Anzahl Runden
+	int width = 9, height = 0, speed = 0, down = 0, rounds = 0;
 	//nächster Block, nächste Blockfrabe, aktuelle Farbe
 	int nextBlock = 0, nextColor = 0, aktColor = 0;
 
@@ -52,6 +52,7 @@ int main() {
 		//Löschen der alten Position
 		deletePosition(aktBlock, Game, width, height);
 
+
 		//jede 2. Runde height ++
 		if (count == false) {
 			height++;
@@ -68,10 +69,15 @@ int main() {
 			ok = isValidShift(aktBlock, Game, width, height);
 			shiftRightLeft(width, ok);
 
+			//automatische Erhöhung des Spieltempos
+			speedUp(rounds, speed);
 
 			//if fast down
-			if (GetAsyncKeyState(0x28)) down = 75;
-			else down = 0;
+			if (GetAsyncKeyState(0x28) && speed <= 75) {
+				down = speed;
+				speed = 75;
+			}
+			else if (speed > down && speed != 95) speed = down;
 
 			//Wenn 'R' (0x52) gedrückt dann rotieren -> Block 5 muss nicht rotiert werden, da Viereck
 			if (GetAsyncKeyState(0x52)) {
@@ -86,11 +92,15 @@ int main() {
 			height--;
 			writeBlockToField(aktBlock, Game, width, height);
 
-
 			//Prüfen auf Game over
 			if (gameOver(Game)) {
 				system("cls");
 				break;
+			}
+
+			//plazierte Blöcke
+			if (rounds <= 120) {
+				rounds++;
 			}
 
 			//Prüfen auf Reihe vollständig (8 Pkt für jeden gesetzten Block)
@@ -107,10 +117,12 @@ int main() {
 		//Ausgabe der beweglichen Elemente
 		writeBlockToField(aktBlock, Game, width, height);
 		showNextBlock(nextBlock, Game);
-		showPoints(points, Game);
+		showPoints(points, Game, rounds);
 		printField(Game);
 
+		go(60, 60);
+		cout << "speed: " << speed;
 		//Fallgeschwindigkeit
-		Sleep(100 - down);
+		Sleep(100 - speed);
 	}
 }

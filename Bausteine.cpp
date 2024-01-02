@@ -1,6 +1,9 @@
 #include <iostream>
 #include <windows.h>
 #include "Bausteine.h"
+#include "GUI.h"
+
+using namespace std;
 
 void randomBlock(tetris& tempblock, int(&aktBlock)[3][3], int& nextBlock, int& color) {
 
@@ -40,7 +43,7 @@ void rotateBlocks(int(&aktBlock)[3][3], tetris tempBlock, int width, int height)
 	}
 }
 
-void printBlocks(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
+void writeBlockToField(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0 ; j < 3; j++) {
@@ -57,7 +60,7 @@ bool isValid(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
 	{
 		for (int j = 0; j < 3; j++) {
 			if (aktBlock[i][j] == 0) continue;
-			if (height + j < 0 || height + j - 1 > tempBlock.cols - 2) return false;
+			if (height + j < 0 || height + j - 1 > COLS - 2) return false;
 			if (tempBlock.spielfeld[width + i][height + j] != ' ') return false;
 
 		}
@@ -76,11 +79,14 @@ int isValidShift(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height)
 			if (width + i - 1 < 0) {
 				return 1;
 			}
-			if (width + i > tempBlock.rows - 2) {
+			if (width + i > ROWS - 2) {
 				return 2;
 			}
 			if (tempBlock.spielfeld[width + i + 1][height + j] != ' ') {
 				return 3;
+			}
+			if (tempBlock.spielfeld[width + i - 1][height + j] != ' ') {
+				return 4;
 			}
 		}
 
@@ -90,12 +96,12 @@ int isValidShift(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height)
 
 void shiftRightLeft(int& width, int ok) {
 	//shift Right
-	if (GetAsyncKeyState(0x27) && (ok == 0 || ok == 1 )) {
+	if (GetAsyncKeyState(0x27) && (ok == 0 || ok == 1 || ok == 4)) {
 		width++;
 	}
 
 	//shift Left
-	if (GetAsyncKeyState(0x25) && (ok == 0 || ok == 2)) {
+	if (GetAsyncKeyState(0x25) && (ok == 0 || ok == 2 || ok == 3)) {
 		width--;
 	}
 }
@@ -114,7 +120,7 @@ void deletePosition(int(&aktBlock)[3][3], tetris& tempBlock, int width, int heig
 
 bool gameOver(tetris& tempBlock) {
 	//Wenn in der letzten Reihe ein Block plaziert wurde = Game over
-	for (int i = 0; i < tempBlock.rows; i++)
+	for (int i = 0; i < ROWS; i++)
 	{
 			if (tempBlock.spielfeld[i][0] != ' ') return true;
 	}
@@ -125,24 +131,21 @@ int rowCompleted(tetris& tempBlock) {
 	static int count = 0;
 	static int points = 0;
 	points = 0;
-	for (int i = 0; i < tempBlock.cols; i++)
+	for (int i = 0; i < COLS; i++)
 	{
-		for (int j = 0; j < tempBlock.rows; j++)
+		for (int j = 0; j < ROWS; j++)
 		{
 			if (tempBlock.spielfeld[j][i] != ' ') count++;
 			if (count == 20) {
 				points = points + 80;
 				//Punkte anders zählen, wenn mehrere Reihen voll sind
-				for (int k = 0; k < tempBlock.rows; k++)
+				for (int k = 0; k < ROWS; k++)
 				{
 					tempBlock.spielfeld[k][i] = '=';
-					Sleep(20);
 				}
-				for (int k = 0; k < tempBlock.rows; k++)
-				{
-					tempBlock.spielfeld[k][i] = ' ';
-				}
-				//Funktion um alle Blöcke nach Unten zu setzen
+				printField(tempBlock);
+				Sleep(500);
+				shiftElementsDown(tempBlock.spielfeld);
 			}
 
 		}
@@ -151,8 +154,25 @@ int rowCompleted(tetris& tempBlock) {
 	return points;
 }
 
-void allBlocksDown(tetris& tempBlock) {
-
+void shiftElementsDown(char (&spielfeld)[ROWS][COLS]) {
+	for (int i = 0; i < COLS; ++i)
+	{
+		for (int j = ROWS - 1; j >= 1; --j)
+		{
+			spielfeld[i][j] = spielfeld[i][j - 1];
+		}
+	}
 }
 
+void printField(tetris& tempBlock){
 
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			go(i + 31, j + 1);
+			cout << tempBlock.spielfeld[i][j];
+		}
+		cout << endl;
+	}
+}

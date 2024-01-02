@@ -5,8 +5,6 @@
 #include "Bausteine.h"
 #include "GUI.h"
 
-
-
 using namespace std;
 
 int main() {
@@ -31,6 +29,8 @@ int main() {
 
 	//Aktuelle Punkte
 	int points = 0;
+	//nur jedes 2 mal height++
+	bool count = false;
 
 	//GUI Spielfeld
 	//Spielfeld (9 = blau)
@@ -46,24 +46,31 @@ int main() {
 	if (color == 0) aktColor = 1;
 	randomBlock(Game, aktBlock, nextBlock, nextColor);
 
-	//***Spielfeld in Bunt*** 
+	//***Spiel-loop*** 
 	while (true)
 	{
+		//Löschen der alten Position
 		deletePosition(aktBlock, Game, width, height);
-		height++;
+
+		//jede 2. Runde height ++
+		if (count == false) {
+			height++;
+			count = true;
+		}
+		else {
+			count = false;
+		}
+
 		noCollision = isValid(aktBlock, Game, width, height);
-		
 		//Wenn keine Kollision
 		if (noCollision) {
-			//Löschen der alten Position
 			
-			//if rechts links
 			ok = isValidShift(aktBlock, Game, width, height);
 			shiftRightLeft(width, ok);
 
 
 			//if fast down
-			if (GetAsyncKeyState(0x28)) down = 150;
+			if (GetAsyncKeyState(0x28)) down = 75;
 			else down = 0;
 
 			//Wenn 'R' (0x52) gedrückt dann rotieren -> Block 5 muss nicht rotiert werden, da Viereck
@@ -75,9 +82,9 @@ int main() {
 		else if (!noCollision) {
 
 			//Wenn bei height++ eine Kollision entstehen würde printe den Block an der letzten Position ohne Kollision
-			//printBlocks ist hier auch wichtig, da nach randomBlock ein ganz neuer Block generiert wird
+			//writeBlockToField ist hier auch wichtig, da nach randomBlock ein ganz neuer Block generiert wird
 			height--;
-			printBlocks(aktBlock, Game, width, height);
+			writeBlockToField(aktBlock, Game, width, height);
 
 
 			//Prüfen auf Game over
@@ -86,36 +93,24 @@ int main() {
 				break;
 			}
 
-			
-
-			
 			//Prüfen auf Reihe vollständig (8 Pkt für jeden gesetzten Block)
 			points = points + rowCompleted(Game) + 8;
-			
+
 			//Start Position
 			height = 0;
-			int width = 9;
+			width = 9;
 			aktColor = nextColor;
 			//Neuer Block
 			randomBlock(Game, aktBlock, nextBlock, nextColor);
 		}
 
 		//Ausgabe der beweglichen Elemente
-		printBlocks(aktBlock, Game, width, height);
+		writeBlockToField(aktBlock, Game, width, height);
 		showNextBlock(nextBlock, Game);
 		showPoints(points, Game);
-		for (int i = 0; i < Game.rows; i++)
-		 {
-			for (int j = 0; j < Game.cols; j++)
-			{
-				color(aktColor);
-				go(i + 31, j +1);
-				cout << Game.spielfeld[i][j];
-			}
-			cout << endl;
-		}
+		printField(Game);
 
 		//Fallgeschwindigkeit
-		Sleep(200-down);
+		Sleep(100 - down);
 	}
 }

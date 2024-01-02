@@ -1,8 +1,11 @@
 #pragma once
 
+	const int ROWS = 20; //Anzahl Spalten (waagerecht)
+	const int COLS = 20; //Anzahl Zeilen (senkrecht)
+
 struct tetris{
 
-	char spielfeld[20][20] = {
+	char spielfeld[ROWS][COLS] = {
 		{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
 		{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
 		{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
@@ -25,9 +28,6 @@ struct tetris{
 		{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '}
 
 	};
-
-	int rows = sizeof(spielfeld) / sizeof(spielfeld[0]);	//Anzahl Spalten (waagerecht)
-	int cols = sizeof(spielfeld[0]) / sizeof(spielfeld[0][0]);	//Anzahl Zeilen (senkrecht)
 
 	int blocks[6][3][3]{
 		{	//erster Block
@@ -80,7 +80,7 @@ void randomBlock(tetris& tempblock, int(&aktBlock)[3][3], int& nextBlock, int& c
 /// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
 /// <param name="width">Array Breite ( x-Koordinate)</param>
 /// <param name="height">Array Höhe ( y-Koordinate)</param>
-void printBlocks(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height);
+void writeBlockToField(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height);
 
 /// <summary>
 /// Funktion zum rotieren der Matrix blocks
@@ -130,3 +130,7 @@ int isValidShift(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height)
 bool gameOver(tetris& tempBlock);
 
 int rowCompleted(tetris& tempBlock);
+
+void shiftElementsDown(char(&spielfeld)[ROWS][COLS]);
+
+void printField(tetris& tempBlock);

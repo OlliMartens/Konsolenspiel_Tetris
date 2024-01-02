@@ -4,6 +4,7 @@
 #include <string>
 #include "Bausteine.h"
 #include "GUI.h"
+#include "GameOver.h"
 
 using namespace std;
 
@@ -27,8 +28,9 @@ int main() {
 	//Array Übergabe aktueller Block
 	int aktBlock[3][3];
 
-	//Aktuelle Punkte
+	//Aktuelle Punkte und Nutzername
 	int points = 0;
+	string username;
 	//nur jedes 2 mal height++
 	bool count = false;
 
@@ -120,9 +122,8 @@ int main() {
 		showPoints(points, Game, rounds);
 		printField(Game);
 
-		go(60, 60);
-		cout << "speed: " << speed;
 		//Fallgeschwindigkeit
 		Sleep(100 - speed);
 	}
+	gameOver(points, username);
 }

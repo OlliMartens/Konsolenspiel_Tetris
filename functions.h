@@ -159,3 +159,9 @@ void printField(tetris& tempBlock);
 /// <param name="rounds"> gezählte Runde </param>
 /// <param name="speed"> änderbares Tempo c.b.r.</param>
 void speedUp(int rounds, int& speed);
+
+/// <summary>
+///  Spielfeld löschen, wenn Game Over
+/// </summary>
+/// <param name="tempBlock"> Übergabe des Spielfeld mit c.b.r. </param>
+void clearField(char(&spielfeld)[ROWS][COLS]);

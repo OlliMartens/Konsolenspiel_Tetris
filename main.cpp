@@ -116,6 +116,7 @@ int main() {
 
 					//Prüfen auf Game over
 					if (gameOver(Game)) {
+						clearField(Game.spielfeld);
 						system("cls");
 						break;
 					}
@@ -163,11 +164,5 @@ int main() {
 			exit = true;
 			break;
 		}
-		Sleep(1000);
-	}
-
-	
-
-
-	
+	}	
 }

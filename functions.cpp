@@ -205,3 +205,14 @@ void speedUp(int rounds, int& speed) {
 	else if(rounds>90)speed = 95;
 
 }
+
+void clearField(char(&spielfeld)[ROWS][COLS]) {
+	for (int i = 0; i < COLS; i++)
+	{
+		for (int j = 0; j < ROWS; j++)
+		{
+			spielfeld[j][i] = ' ';
+
+		}
+	}
+}

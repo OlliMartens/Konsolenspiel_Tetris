@@ -1,6 +1,6 @@
 #include <iostream>  
 #include <Windows.h>  
-#include "Bausteine.h"
+#include "functions.h"
 
 using namespace std;
 

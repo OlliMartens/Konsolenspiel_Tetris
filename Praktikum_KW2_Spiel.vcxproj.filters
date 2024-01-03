@@ -18,7 +18,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Bausteine.cpp">
+    <ClCompile Include="functions.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="GUI.cpp">
@@ -27,15 +27,27 @@
     <ClCompile Include="GameOver.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Highscore_Anleitung.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bausteine.h">
+    <ClInclude Include="functions.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="GUI.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="GameOver.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Highscore_Anleitung.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

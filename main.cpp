@@ -2,7 +2,7 @@
 #include <windows.h>
 #include <conio.h>	
 #include <string>
-#include "Bausteine.h"
+#include "functions.h"
 #include "GUI.h"
 #include "GameOver.h"
 

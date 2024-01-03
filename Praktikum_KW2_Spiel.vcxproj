@@ -129,13 +129,17 @@
   <ItemGroup>
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GUI.cpp" />
+    <ClCompile Include="Highscore_Anleitung.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Bausteine.cpp" />
+    <ClCompile Include="functions.cpp" />
+    <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bausteine.h" />
+    <ClInclude Include="functions.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GUI.h" />
+    <ClInclude Include="Highscore_Anleitung.h" />
+    <ClInclude Include="Menu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <windows.h>
-#include "Bausteine.h"
+#include "functions.h"
 #include "GUI.h"
 
 using namespace std;

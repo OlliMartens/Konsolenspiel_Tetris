@@ -32,4 +32,4 @@ string typeUsername(int score);
 /// </summary>
 /// <param name="score">Übergabe des Scores</param>
 /// <param name="username">Übergabe des Nutzernamens</param>
-void gameOver(int score, string username);
+void gameOver(int& score, string& username);

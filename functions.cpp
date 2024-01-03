@@ -54,7 +54,6 @@ void writeBlockToField(int(&aktBlock)[3][3], tetris& tempBlock, int width, int h
 	}
 }
 
-
 bool isValid(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
 	for (int i = 0; i < 3; i++)
 	{

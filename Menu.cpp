@@ -153,42 +153,51 @@ void logoTetris() {       //Tetris Logo
 
 void controls() {
 
-    color(1);
-    go(65, 8);
+    color(12);
+    go(65, 9);
     cout << "Controls:";
-    for (int i = 0; i < 25; i++)
+    for (int i = 0; i < 31; i++)
     {
         color(3);
-        go(65 + i, 9);
+        go(63 + i, 10);
         cout << char(223);
+        go(63 + i, 22);
+        cout << char(223);
+    }
+    for (int i = 0; i < 12; i++) {
+        color(3);
+        go(63 , 10+ i);
+        cout << char(219);
+        go(93, 10 + i);
+        cout << char(219);
     }
 
     //Enter
     color(0x0f);
-    go(65, 10);
-    cout << "              " << char(218) << char(196) << char(196) << char(196) << char(196) << char(196) << char(191);
     go(65, 11);
-    cout << "Selection ->  " << char(179) << "enter" << char(179);
+    cout << "              " << char(218) << char(196) << char(196) << char(196) << char(196) << char(196) << char(191);
     go(65, 12);
-    cout << "              " << char(192) << char(196) << char(191) << "   " << char(179);
+    cout << "Selection ->  " << char(179) << "enter" << char(179);
     go(65, 13);
-    cout << "                " << char(179) << "   " << char(179);
+    cout << "              " << char(192) << char(196) << char(191) << "   " << char(179);
     go(65, 14);
+    cout << "                " << char(179) << "   " << char(179);
+    go(65, 15);
     cout << "                " << char(192) << char(196) << char(196) << char(196) << char(217);
     //Pfeiltasten
-    go(65, 16);
-    cout << "              " << char(218) << char(196) << char(196) << char(196) << char(196) << char(191) << " " << char(218) << char(196) << char(196) << char(196) << char(196) << char(191);
     go(65, 17);
-    wcout << "Up & Down ->  " << char(179) << " /" << char(92) << " " << char(179) << " " << char(179) << " " << char(92) << "/ " << char(179);
+    cout << "              " << char(218) << char(196) << char(196) << char(196) << char(196) << char(191) << " " << char(218) << char(196) << char(196) << char(196) << char(196) << char(191);
     go(65, 18);
+    wcout << "Up & Down ->  " << char(179) << " /" << char(92) << " " << char(179) << " " << char(179) << " " << char(92) << "/ " << char(179);
+    go(65, 19);
     cout << "              " << char(192) << char(196) << char(196) << char(196) << char(196) << char(217) << " " << char(192) << char(196) << char(196) << char(196) << char(196) << char(217);
 
 }
 
-void Menu(int count) {
+int Menu() {
     //Variablen (initialisiert mit der gewünschten Farbe)
-    int AW1 = 20, AW2 = 7, AW3 = 7, AW4 = 7;
-
+    int AW1 = 20, AW2 = 7, AW3 = 7, AW4 = 7, count = 0;
+    bool exit = false;
 
     //Ausgabe des Tetris Logos
     logoTetris();
@@ -208,6 +217,7 @@ void Menu(int count) {
         int key = _getch();
 
         //////////////////////////////////////////////////////////////////////////////
+        if (key == 13) break;
         if (key == 80 && count < 3) count++;
         else if (key == 72 && count > 0) count--;
 
@@ -246,4 +256,5 @@ void Menu(int count) {
 
         Sleep(50);
     }
+    return count;
 }

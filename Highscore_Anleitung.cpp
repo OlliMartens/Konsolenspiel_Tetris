@@ -1,3 +1,4 @@
+#include <conio.h>
 #include "Highscore_Anleitung.h"
 #include "GUI.h"
 
@@ -179,6 +180,13 @@ void podium(vector<Daten>& dataArray)
 	{
 		cout << char(219) << " ";
 	}
+	//Zurück zum Stratmenu
+	cout << endl <<"\n\n\t\t\t\tPress Escape to go back to Menu";
+	int keyH = 0;
+	while (keyH != 27)
+	{
+		keyH = _getch();
+	}
 }
 
 
@@ -321,23 +329,26 @@ void Anleitung()
 		}
 		else cout << "FEHLER BEIM OEFFNEN DER ANLEITUNG! " << endl;
 	}
+	color(4);
+	//Zurück zum Stratmenu
+	cout << endl << "Press Escape to go back to Menu";
+	int keyA = 0;
+	while (keyA != 27)
+	{
+		keyA = _getch();
+	}
 }
 
 
-int highscore(int& score, string& username, vector<Daten> &dataArray)
+void highscore(int& score, string& username, vector<Daten> &dataArray)
 {
 	Daten zwischenspeicher;
 
-	for (int i = 0; i < 2; i++)
-	{
-
-		cout << "highscore: ";
-		cin >> zwischenspeicher.highscore;
-		cout << "\n\n username: ";
-		cin >> zwischenspeicher.username;
-
+		zwischenspeicher.highscore = score;
+		zwischenspeicher.username = username;
 		dataArray.push_back(zwischenspeicher);
-	}
-	speichern(dataArray);
-	SortAndPrintData();
+
+		speichern(dataArray);
+		SortAndPrintData();
+
 }

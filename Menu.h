@@ -32,6 +32,6 @@ void controls();
 /// <summary>
 /// Menusteuerung
 /// </summary>
-/// <param name="count"></param>
-void Menu(int count);
+/// <returns> Status Count </returns>
+int Menu();
 

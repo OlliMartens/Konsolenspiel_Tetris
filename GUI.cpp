@@ -178,7 +178,8 @@ void noCursor()
  // https://mycodecollection.blogspot.com/2014/12/console-fun-colors.html
  // ASCII-Tabelle erweitert
  // https://theasciicode.com.ar/extended-ascii-code/black-square-ascii-code-254.html
- //https://gist.github.com/eazybit/20dac48b2cd83c960afe
+ // https://gist.github.com/eazybit/20dac48b2cd83c960afe
+ // https://stackoverflow.com/questions/8468514/getasynckeystate-creating-problems-with-cin
 
 
  

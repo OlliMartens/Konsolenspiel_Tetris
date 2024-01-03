@@ -30,4 +30,4 @@ void SortAndPrintData();
 void Anleitung();
 
 
-int highscore(int& score, string& username, vector<Daten> &dataArray);
+void highscore(int& score, string& username, vector<Daten> &dataArray);

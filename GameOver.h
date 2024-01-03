@@ -15,6 +15,11 @@ void logoGameOver();
 void movingSkull();
 
 /// <summary>
+/// Ausgabe des Totenkopfs und einer Box für die Eingabe
+/// </summary>
+void inputBox();
+
+/// <summary>
 /// Eingabe Benutzername
 /// </summary>
 /// <param name="score"> Übergabe des Scores </param>

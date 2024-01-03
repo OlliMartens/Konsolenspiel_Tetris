@@ -275,8 +275,7 @@ void movingSkull() {
     }
 }
 
-string typeUsername(int score) {
-    string username;
+void inputBox() {
 
     go(34, 14);
     color(6);
@@ -294,13 +293,45 @@ string typeUsername(int score) {
         << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(205) << char(188);
 
     movingSkull();
+}
+
+string typeUsername(int score) {
+
+    string username;
+    char ch;
+ 
+    inputBox();
+
     color(6);
     go(35, 21);
-    cout << "Your score is: " << score;
-    color(1);
-    go(35, 18);
-    cin >> username;
+    cout << "Your score is: " << score << endl;
 
+            while (true) {
+
+                color(1);
+                go(35, 18);
+                ch = cin.get();
+
+                // Überprüfen, ob Enter-Taste
+                if (ch == 10) {
+                    break;
+                }
+
+                // Überprüfen, ob Backspace-Taste
+                if (ch == 8) {
+                    if (!username.empty()) {
+                        // Lösche das letzte Zeichen
+                        username.pop_back();
+
+                        // Bewege den Cursor zurück und gib ein Leerzeichen aus, um das gelöschte Zeichen zu überschreiben
+                        cout << "\b \b";
+                    }
+                }
+                else {
+                    username += ch;
+                    cout << ch;
+                }
+            }
 
     color(0x0f);
     return username;
@@ -311,3 +342,6 @@ void gameOver(int score, string username){
     logoGameOver();
     username = typeUsername(score);
 }
+
+
+

@@ -214,9 +214,13 @@ void sortierVektor(vector<Daten>& dataArray)
 }
 
 
-
-void speichern(vector<Daten>& dataArray)
+void speichern(int points, string username, vector<Daten>& dataArray)
 {
+	Daten zwischenspeicher;
+
+	zwischenspeicher.highscore = points;
+	zwischenspeicher.username = username;
+	dataArray.push_back(zwischenspeicher);
 	ofstream myfile("Liste.txt", ios::app);
 	//myfile.open("Liste.txt"); //verursacht, dass alte daten wieder überschrieben werden
 	string text;
@@ -242,10 +246,9 @@ void speichern(vector<Daten>& dataArray)
 }
 
 
-
-void SortAndPrintData()
+void SortAndPrintData(vector<Daten>& dataArray)
 {
-	vector<Daten> dataArray;
+
 	ifstream myfile;
 	myfile.open("Liste.txt");
 	string text;
@@ -337,18 +340,4 @@ void Anleitung()
 	{
 		keyA = _getch();
 	}
-}
-
-
-void highscore(int& score, string& username, vector<Daten> &dataArray)
-{
-	Daten zwischenspeicher;
-
-		zwischenspeicher.highscore = score;
-		zwischenspeicher.username = username;
-		dataArray.push_back(zwischenspeicher);
-
-		speichern(dataArray);
-		SortAndPrintData();
-
 }

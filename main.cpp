@@ -147,12 +147,13 @@ int main() {
 				Sleep(100 - speed);
 			}
 			gameOver(points, username);
+			speichern(points, username, dataArray);
 
 			// Case 0
 			break;
 		case 1:
 			system("cls");
-			highscore(points, username, dataArray);
+			SortAndPrintData(dataArray);
 			break;
 
 		case 2:
@@ -164,5 +165,6 @@ int main() {
 			exit = true;
 			break;
 		}
+		Sleep(200);
 	}	
 }

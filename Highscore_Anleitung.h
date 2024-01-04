@@ -21,13 +21,13 @@ void podium(vector<Daten>& dataArray);
 void sortierVektor(vector<Daten>& dataArray);
 
 
-void speichern(vector<Daten>& dataArray);
+void speichern(int points, string username, vector<Daten>& dataArray);
 
 
-void SortAndPrintData();
+void SortAndPrintData(vector<Daten>& dataArray);
 
 
 void Anleitung();
 
 
-void highscore(int& score, string& username, vector<Daten> &dataArray);
+//void highscore(int& score, string& username, vector<Daten> &dataArray);

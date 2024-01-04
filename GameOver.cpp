@@ -313,13 +313,12 @@ string typeUsername(int score) {
 
     //Input Buffer Löschen um unnötige Eingabe während des Spiels nicht angezeigt zu bekommen
     FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+    color(1);
+    go(35, 18);
 
             while (true) {
 
-                    color(1);
-                    go(35, 18);
                     ch = cin.get();
-
                     // Überprüfen, ob Enter-Taste gedrückt wurde
                     if (ch == 10) {
                         break;
@@ -330,9 +329,8 @@ string typeUsername(int score) {
                         if (!username.empty()) {
                             // Lösche das letzte Zeichen aus der Eingabe
                             username.pop_back();
-
-                            // Bewege den Cursor zurück und gib ein Leerzeichen aus, um das gelöschte Zeichen zu überschreiben
-                            cout << "\b \b";
+                            cout << ' ';
+                            cout.flush();  // Erzwingt die Ausgabe sofort
                         }
                     }
                     else {

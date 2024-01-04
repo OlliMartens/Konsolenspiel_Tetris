@@ -181,7 +181,7 @@ void podium(vector<Daten>& dataArray)
 		cout << char(219) << " ";
 	}
 	//Zurück zum Stratmenu
-	cout << endl <<"\n\n\t\t\t\tPress Escape to go back to Menu";
+	cout << endl << "\n\n\t\t\t\tPress Escape to go back to Menu";
 	int keyH = 0;
 	while (keyH != 27)
 	{
@@ -213,42 +213,9 @@ void sortierVektor(vector<Daten>& dataArray)
 	}
 }
 
-
-void speichern(int points, string username, vector<Daten>& dataArray)
+void SortAndPrintData()
 {
-	Daten zwischenspeicher;
-
-	zwischenspeicher.highscore = points;
-	zwischenspeicher.username = username;
-	dataArray.push_back(zwischenspeicher);
-	ofstream myfile("Liste.txt", ios::app);
-	//myfile.open("Liste.txt"); //verursacht, dass alte daten wieder überschrieben werden
-	string text;
-
-	if (myfile.is_open())
-	{
-		sortierVektor(dataArray);
-		//// Einfügen des Benutzernamen und des Highscores ////
-		for (int i = 0; i < dataArray.size(); i++)
-		{
-			myfile << dataArray[i].highscore;
-			//myfile.width(1);
-			myfile << " ";
-			myfile << dataArray[i].username;
-			myfile << endl;
-		}
-	}
-	else
-	{
-		cout << "\n\n FEHLER BEIM OEFFNEN DER DATEI!";
-	}
-	myfile.close();
-}
-
-
-void SortAndPrintData(vector<Daten>& dataArray)
-{
-
+	vector<Daten> dataArray;
 	ifstream myfile;
 	myfile.open("Liste.txt");
 	string text;
@@ -340,4 +307,35 @@ void Anleitung()
 	{
 		keyA = _getch();
 	}
+}
+
+void speichernNew(int& points, string& username, vector<Daten> dataArray)
+{
+	Daten zwischenspeicher;
+
+	zwischenspeicher.highscore = points;
+	zwischenspeicher.username = username;
+	dataArray.push_back(zwischenspeicher);
+	ofstream myfile("Liste.txt", ios::app);
+	//myfile.open("Liste.txt"); //verursacht, dass alte daten wieder überschrieben werden
+	string text;
+
+	if (myfile.is_open())
+	{
+		sortierVektor(dataArray);
+		//// Einfügen des Benutzernamen und des Highscores ////
+		for (int i = 0; i < dataArray.size(); i++)
+		{
+			myfile << dataArray[i].highscore;
+			//myfile.width(1);
+			myfile << " ";
+			myfile << dataArray[i].username;
+			myfile << endl;
+		}
+	}
+	else
+	{
+		cout << "\n\n FEHLER BEIM OEFFNEN DER DATEI!";
+	}
+	myfile.close();
 }

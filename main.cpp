@@ -13,7 +13,7 @@ using namespace std;
 int main() {
 
 	srand((unsigned)time(NULL));
-	
+
 	//Struct Aufruf
 	tetris Game;
 	vector<Daten> dataArray;
@@ -147,13 +147,14 @@ int main() {
 				Sleep(100 - speed);
 			}
 			gameOver(points, username);
-			speichern(points, username, dataArray);
+			speichernNew(points, username, dataArray);
+
 
 			// Case 0
 			break;
 		case 1:
 			system("cls");
-			SortAndPrintData(dataArray);
+			SortAndPrintData();
 			break;
 
 		case 2:
@@ -166,5 +167,5 @@ int main() {
 			break;
 		}
 		Sleep(200);
-	}	
+	}
 }

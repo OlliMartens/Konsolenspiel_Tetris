@@ -24,6 +24,9 @@ void sortierVektor(vector<Daten>& dataArray);
 void SortAndPrintData();
 
 
+void logoManual();
+
+
 void Anleitung();
 
 

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void randomBlock(tetris& tempblock, int(&aktBlock)[3][3], int& nextBlock, int& color) {
+void randomBlock(tetris& tempblock, int(&aktBlock)[3][3], int& nextBlock) {
 
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
@@ -15,10 +15,7 @@ void randomBlock(tetris& tempblock, int(&aktBlock)[3][3], int& nextBlock, int& c
 	
 	//zufälliger Block
 	srand((unsigned)time(NULL));
-	nextBlock = rand() % 6;
-	//zufällige Blockfarbe
-	color = rand() % 10;
-	if (color == 0) color = 1;
+	nextBlock = rand() % numBlock;
 }
 
 void rotateBlocks(int(&aktBlock)[3][3], tetris tempBlock, int width, int height) {
@@ -47,8 +44,8 @@ void writeBlockToField(int(&aktBlock)[3][3], tetris& tempBlock, int width, int h
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0 ; j < 3; j++) {
-			if (aktBlock[i][j] == 1) {
-				tempBlock.spielfeld[width + i][height + j] = char(178);
+			if (aktBlock[i][j] != 0) {
+				tempBlock.spielfeld[width + i][height + j] = aktBlock[i][j];
 			}
 		}
 	}
@@ -192,7 +189,20 @@ void printField(tetris& tempBlock){
 		for (int j = 0; j < COLS; j++)
 		{
 			go(i + 31, j + 1);
-			cout << tempBlock.spielfeld[i][j];
+			if(tempBlock.spielfeld[i][j] == ' ')
+			{
+				cout << tempBlock.spielfeld[i][j];
+				continue;
+			}
+			else if (tempBlock.spielfeld[i][j] == '=') {
+				color(7);
+				cout << tempBlock.spielfeld[i][j];
+				continue;
+			}
+			else {
+				color(tempBlock.spielfeld[i][j]);
+				cout << char(178);
+			}
 		}
 		cout << endl;
 	}

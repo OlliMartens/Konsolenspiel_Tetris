@@ -139,18 +139,37 @@ void noCursor()
 
  void showNextBlock(int nextBlock, tetris& tempBlock) {
 
-     for (int i = 0; i < 3; i++)
+     /*for (int i = 0; i < 3; i++)
      {
          for (int j = 0; j < 3; j++)
          {
              color(0x0f);
              go(i + 70, j + 7);
+             
              if (tempBlock.blocks[nextBlock][i][j] == 1) {
                  cout << char(178);
              }
              else {
                  //löschen der Char
                  cout << " ";
+             }
+         }
+         cout << endl;
+     }*/
+     for (int i = 0; i < 3; i++)
+     {
+         for (int j = 0; j < 3; j++)
+         {
+             go(i + 70, j + 7);
+             if (tempBlock.blocks[nextBlock][i][j] == 0)
+             {
+                 //löschen der Char
+                 cout << " ";
+                 continue;
+             }
+             else {
+                 color(tempBlock.blocks[nextBlock][i][j]);
+                 cout << char(178);
              }
          }
          cout << endl;
@@ -180,6 +199,7 @@ void noCursor()
  // https://theasciicode.com.ar/extended-ascii-code/black-square-ascii-code-254.html
  // https://gist.github.com/eazybit/20dac48b2cd83c960afe
  // https://stackoverflow.com/questions/8468514/getasynckeystate-creating-problems-with-cin
+ // https://patorjk.com/software/taag/#p=display&h=0&v=0&f=ANSI%20Shadow&t=game%20over%0A
 
 
  

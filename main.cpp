@@ -27,7 +27,7 @@ int main() {
 	//Breite, Höhe, Fallgeschw., Fallgeschw.-Änderung, Anzahl Runden
 	int width = 9, height = 0, speed = 0, down = 0, rounds = 0;
 	//nächster Block, nächste Blockfrabe, aktuelle Farbe
-	int nextBlock = 0, nextColor = 0, aktColor = 0;
+	int nextBlock = 0, currentBlock = 0;
 
 	//Array Übergabe aktueller Block
 	int aktBlock[3][3];
@@ -52,6 +52,12 @@ int main() {
 		switch (zustand)
 		{
 		case 0:
+
+			//Variablen zurücksetzen
+			width = 9; height = 0; speed = 0; down = 0; rounds = 0;
+			nextBlock = 0; currentBlock = 0; points = 0; ok = 0;
+			count = false;
+
 			system("cls");
 
 			//GUI Spielfeld
@@ -63,17 +69,15 @@ int main() {
 			nextBlockGUI();
 
 			//Erzeugen des Startblocks + Farbe
-			nextBlock = rand() % 5;
-			aktColor = rand() % 10;
-			if (color == 0) aktColor = 1;
-			randomBlock(Game, aktBlock, nextBlock, nextColor);
+			nextBlock = rand() % numBlock;
+			currentBlock = nextBlock;
+			randomBlock(Game, aktBlock, nextBlock);
 
 			//***Spiel-loop*** 
 			while (true)
 			{
 				//Löschen der alten Position
 				deletePosition(aktBlock, Game, width, height);
-
 
 				//jede 2. Runde height ++
 				if (count == false) {
@@ -102,7 +106,7 @@ int main() {
 					else if (speed > down && speed != 95) speed = down;
 
 					//Wenn 'R' (0x52) gedrückt dann rotieren -> Block 5 muss nicht rotiert werden, da Viereck
-					if (GetAsyncKeyState(0x52)) {
+					if (GetAsyncKeyState(0x52) && currentBlock != 4 ) {
 						rotateBlocks(aktBlock, Game, width, height);
 					}
 				}
@@ -132,9 +136,9 @@ int main() {
 					//Start Position
 					height = 0;
 					width = 9;
-					aktColor = nextColor;
+					currentBlock = nextBlock;
 					//Neuer Block
-					randomBlock(Game, aktBlock, nextBlock, nextColor);
+					randomBlock(Game, aktBlock, nextBlock);
 				}
 
 				//Ausgabe der beweglichen Elemente
@@ -146,8 +150,8 @@ int main() {
 				//Fallgeschwindigkeit
 				Sleep(100 - speed);
 			}
-			gameOver(points, username);
-			speichernNew(points, username, dataArray);
+				gameOver(points, username);
+				speichernNew(points, username, dataArray);
 
 
 			// Case 0
@@ -166,6 +170,6 @@ int main() {
 			exit = true;
 			break;
 		}
-		Sleep(200);
+		//Sleep(200);
 	}
 }

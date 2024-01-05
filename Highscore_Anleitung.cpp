@@ -242,10 +242,153 @@ void SortAndPrintData()
 	myfile.close();
 }
 
+void logoManual() {
+	go(5,1);
+	for (int i = 0; i < 49; i++) {
+		if ((i >= 4 && i <= 6) || i == 11 || i == 18 || (i >= 23 && i <= 25) || (i >= 32 && i <= 34) || i == 38 || i == 45) {
+			cout << " ";
+		}
+		else if (i == 3 || i == 10 || i == 17 || i == 22 || i == 28 || i == 31 || i == 37 || i == 44 || i == 48) {
+			color(11);
+			cout << char(187);
+		}
+		else {
+			color(13);
+			cout << char(219);
+		}
+	}
+	go(5, 2);
+	for (int i = 0; i < 49; i++) {
+		if (i == 5 || i == 24 || i == 25 || (i >= 32 && i <= 34)) {
+			cout << " ";
+		}
+		else if (i == 4 || i == 18 || i == 23 || i == 45) {
+			color(11);
+			cout << char(187);
+		}
+		else if (i == 10 || i == 28 || i == 31 || i == 37 || i == 48) {
+			color(11);
+			cout << char(186);
+		}
+		else if (i == 13 || i == 40) {
+			color(11);
+			cout << char(201);
+		}
+		else if (i == 14 || i == 15 || i == 41 || i == 42) {
+			color(11);
+			cout << char(205);
+		}
+		else {
+			color(13);
+			cout << char(219);
+		}
+	}
+	go(5, 3);
+	for (int i = 0; i < 49; i++) {
+		if (i == 25 || (i >= 32 && i <= 34)) {
+			cout << " ";
+		}
+		else if (i == 24) {
+			color(11);
+			cout << char(187);
+		}
+		else if (i == 10 || i == 18 || i == 28 || i == 31 || i == 37 || i == 45 || i == 48) {
+			color(11);
+			cout << char(186);
+		}
+		else if (i == 2 || i == 7 || i == 21) {
+			color(11);
+			cout << char(201);
+		}
+		else {
+			color(13);
+			cout << char(219);
+		}
+	}
 
+	go(5, 4);
+	for (int i = 0; i < 49; i++) {
+		if ((i >= 32 && i <= 34)) {
+			cout << " ";
+		}
+		else if (i == 25) {
+			color(11);
+			cout << char(187);
+		}
+		else if (i == 2 || i == 10 || i == 18 || i == 21 || i == 28 || i == 31 || i == 37 || i == 45 || i == 48) {
+			color(11);
+			cout << char(186);
+		}
+		else if (i == 14 || i == 15 || i == 41 || i == 42) {
+			color(11);
+			cout << char(205);
+		}
+		else if (i == 3 || i == 22) {
+			color(11);
+			cout << char(200);
+		}
+		else if (i == 6 || i == 13 || i == 40) {
+			color(11);
+			cout << char(201);
+		}
+		else if (i == 7) {
+			color(11);
+			cout << char(188);
+		}
+		else {
+			color(13);
+			cout << char(219);
+		}
+	}
+	go(5, 5);
+	for (int i = 0; i < 54; i++) {
+		if (i == 3 || i == 7 || i == 14 || i == 15 || i == 22 || i == 41 || i == 42) {
+			cout << " ";
+		}
+		else if (i == 53) {
+			color(11);
+			cout << char(187);
+		}
+		else if (i == 2 || i == 10 || i == 13 || i == 18 || i == 21 || i == 28 || i == 40 || i == 45) {
+			color(11);
+			cout << char(186);
+		}
+		else if (i == 5) {
+			color(11);
+			cout << char(205);
+		}
+		else if (i == 4 || i == 23 || i == 29) {
+			color(11);
+			cout << char(200);
+		}
+		else if (i == 36) {
+			color(11);
+			cout << char(201);
+		}
+		else if (i == 6 || i == 37) {
+			color(11);
+			cout << char(188);
+		}
+		else {
+			color(13);
+			cout << char(219);
+		}
+	}
+	go(5, 6);
+	color(11);
+	cout << char(200) << char(205) << char(188) << "     " << char(200) << char(205) << char(188) << char(200) << char(205) << char(188)
+		<< "  " << char(200) << char(205) << char(188) << char(200) << char(205) << char(188) << "  " << char(200) << char(205) << char(205)
+		<< char(205) << char(188) << " " << char(200) << char(205) << char(205) << char(205) << char(205) << char(205) << char(188) << " "
+		<< char(200) << char(205) << char(188) << "  " << char(200) << char(205) << char(188) << char(200) << char(205) << char(205) << char(205)
+		<< char(205) << char(205) << char(205) << char(188);
+	color(0x0f);
+
+}
 
 void Anleitung()
 {
+	logoManual();
+	go(5, 8);
 	bool success = false;
 	string anleitung;
 	ofstream file("Anleitung.txt", ios::app);
@@ -293,7 +436,7 @@ void Anleitung()
 		{
 			while (getline(file, anleitung))
 			{
-				cout << anleitung << endl;
+				cout << "\t" << anleitung << endl;
 			}
 			file.close();
 		}
@@ -301,7 +444,7 @@ void Anleitung()
 	}
 	color(4);
 	//Zurück zum Stratmenu
-	cout << endl << "Press Escape to go back to Menu";
+	cout << endl << "\tPress Escape to go back to Menu";
 	int keyA = 0;
 	while (keyA != 27)
 	{

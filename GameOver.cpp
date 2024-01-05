@@ -313,6 +313,7 @@ string typeUsername(int score) {
 
     //Input Buffer Löschen um unnötige Eingabe während des Spiels nicht angezeigt zu bekommen
     FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+
     color(1);
     go(35, 18);
 

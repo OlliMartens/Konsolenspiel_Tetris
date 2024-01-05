@@ -2,6 +2,7 @@
 
 	const int ROWS = 20; //Anzahl Spalten (waagerecht)
 	const int COLS = 20; //Anzahl Zeilen (senkrecht)
+	const int numBlock = 6; //Anzahl der Unterschielichen Blöcke für rand()
 
 struct tetris{
 
@@ -26,38 +27,37 @@ struct tetris{
 		{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
 		{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
 		{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '}
-
 	};
 
 	int blocks[6][3][3]{
 		{	//erster Block
-		{0,1,0},
-		{0,1,0},
+		{0,2,0},
+		{0,2,0},
 		{0,0,0}
 		},
 		{	//zweiter Block
-		{0,1,0},
-		{0,1,0},
-		{0,1,0}
+		{0,3,0},
+		{0,3,0},
+		{0,3,0}
 		},
 		{	//dritter Block
-		{0,1,0},
-		{0,1,0},
-		{1,1,0}
+		{0,4,0},
+		{0,4,0},
+		{4,4,0}
 		},
 		{	//vierter Block
-		{0,1,0},
-		{1,1,0},
-		{1,0,0}
+		{0,5,0},
+		{5,5,0},
+		{5,0,0}
 		},
 		{	//fünfter Block
-		{1,1,0},
-		{1,1,0},
+		{6,6,0},
+		{6,6,0},
 		{0,0,0}
 		},
 		{	//sechster Block
-		{0,1,0},
-		{1,1,0},
+		{0,7,0},
+		{7,7,0},
 		{0,0,0}
 		}
 	};
@@ -71,7 +71,7 @@ struct tetris{
 /// <param name="aktBlock">aktueller bzw. nächster Block</param>
 /// <param name="nextBlock"> nächster Block </param>
 /// <param name="color"> zufällige Frabe des Blocks </param>
-void randomBlock(tetris& tempblock, int(&aktBlock)[3][3], int& nextBlock, int& color);
+void randomBlock(tetris& tempblock, int(&aktBlock)[3][3], int& nextBlock);
 
 /// <summary>
 /// Schreiben der Blöcke in das Spielfeld -> noch ohne Ausgabe (cout)

@@ -130,7 +130,7 @@
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="Highscore_Anleitung.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="programm.cpp" />
     <ClCompile Include="functions.cpp" />
     <ClCompile Include="Menu.cpp" />
   </ItemGroup>

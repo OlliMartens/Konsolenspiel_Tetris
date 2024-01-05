@@ -42,6 +42,7 @@ int main() {
 	//einlesen der aktuell gedrückten Taste
 	char ch;
 
+	//Ablauf
 	/////////////////////////////////////////////////////////////////////////////
 
 	intro();
@@ -121,7 +122,7 @@ int main() {
 					writeBlockToField(aktBlock, Game, width, height);
 
 					//Prüfen auf Game over
-					if (gameOver(Game)) {
+					if (checkGameOver(Game)) {
 						clearField(Game.spielfeld);
 						system("cls");
 						break;
@@ -172,7 +173,6 @@ int main() {
 			exit = true;
 			break;
 		}
-		//Sleep(200);
 	}
 	return 0;
 }

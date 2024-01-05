@@ -452,7 +452,7 @@ void Anleitung()
 	}
 }
 
-void speichernNew(int points, string username, vector<Daten>& dataArray)
+void speichernNew(int& points, string& username, vector<Daten>& dataArray)
 {
 	Daten zwischenspeicher;
 
@@ -460,7 +460,6 @@ void speichernNew(int points, string username, vector<Daten>& dataArray)
 	zwischenspeicher.username = username;
 	dataArray.push_back(zwischenspeicher);
 	ofstream myfile("Liste.txt", ios::app);
-	//myfile.open("Liste.txt"); //verursacht, dass alte daten wieder überschrieben werden
 	string text;
 
 	if (myfile.is_open())
@@ -470,7 +469,6 @@ void speichernNew(int points, string username, vector<Daten>& dataArray)
 		for (int i = 0; i < dataArray.size(); i++)
 		{
 			myfile << dataArray[i].highscore;
-			//myfile.width(1);
 			myfile << " ";
 			myfile << dataArray[i].username;
 			myfile << endl;

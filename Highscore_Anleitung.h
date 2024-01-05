@@ -47,4 +47,4 @@ void Anleitung();
 /// <param name="points"> Übergabe des Punktestands </param>
 /// <param name="username"> Übergabe des Nutzernamens </param>
 /// <param name="dataArray"> Übergabe des Datenarrays c.b.r. </param>
-void speichernNew(int points, string username, vector<Daten>& dataArray);
+void speichernNew(int& points, string& username, vector<Daten>& dataArray);

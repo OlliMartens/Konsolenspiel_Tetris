@@ -132,7 +132,7 @@ int isValidShift(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height)
 /// </summary>
 /// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
 /// <returns>Status Gamer Over</returns>
-bool gameOver(tetris& tempBlock);
+bool checkGameOver(tetris& tempBlock);
 
 /// <summary>
 /// Überprüfung, ob eine Reihe Komplett ist und anschließende Punkte ausgabe

@@ -17,7 +17,7 @@ void color(int y) { //Farbe der Schrift/Hintergrund ändern
     SetConsoleTextAttribute(out, y);
 }
 
-void noCursor()
+void noCursor() // Cursor ausblenden
 {
     CONSOLE_CURSOR_INFO info;
     HANDLE  out;
@@ -139,23 +139,6 @@ void noCursor()
 
  void showNextBlock(int nextBlock, tetris& tempBlock) {
 
-     /*for (int i = 0; i < 3; i++)
-     {
-         for (int j = 0; j < 3; j++)
-         {
-             color(0x0f);
-             go(i + 70, j + 7);
-             
-             if (tempBlock.blocks[nextBlock][i][j] == 1) {
-                 cout << char(178);
-             }
-             else {
-                 //löschen der Char
-                 cout << " ";
-             }
-         }
-         cout << endl;
-     }*/
      for (int i = 0; i < 3; i++)
      {
          for (int j = 0; j < 3; j++)
@@ -163,7 +146,7 @@ void noCursor()
              go(i + 70, j + 7);
              if (tempBlock.blocks[nextBlock][i][j] == 0)
              {
-                 //löschen der Char
+                 //löschen der Char des alten Blocks
                  cout << " ";
                  continue;
              }
@@ -192,7 +175,7 @@ void noCursor()
      color(0x0f);
  }
 
- void blockFormIntro() {
+ void blockFormIntro() {    //Außenumrandung des Blocks
      for (int i = 0; i < 91; i++)
      {
          go(20 + i, 5);
@@ -227,10 +210,11 @@ void noCursor()
  }
 
 
-void intro() {
+void intro() { // Ablauf Intro
      Sleep(1000);
      color(9);
      blockFormIntro();
+     //Füllen des Blocks
      for (int i = 0; i < 30; i++) {
          for (int j = 0; j < 9; j++) {
              color(4);
@@ -262,6 +246,7 @@ void intro() {
              Sleep(2);
          }
      }
+     //Blinken des Blocks
      for (int i = 0; i < 8; i++)
      {
          if (i == 0 || i == 2 || i == 4 || i == 6) {
@@ -288,6 +273,8 @@ void intro() {
  // https://gist.github.com/eazybit/20dac48b2cd83c960afe
  // https://stackoverflow.com/questions/8468514/getasynckeystate-creating-problems-with-cin
  // https://patorjk.com/software/taag/#p=display&h=0&v=0&f=ANSI%20Shadow&t=game%20over%0A
+ // https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getasynckeystate
+ // https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 
 
  

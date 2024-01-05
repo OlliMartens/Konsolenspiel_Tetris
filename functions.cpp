@@ -6,7 +6,7 @@
 using namespace std;
 
 void randomBlock(tetris& tempblock, int(&aktBlock)[3][3], int& nextBlock) {
-
+	//schreiben der Blockform in ein Array zur späteren verarbeitung
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
 			aktBlock[i][j] = tempblock.blocks[nextBlock][i][j];
@@ -116,7 +116,7 @@ void deletePosition(int(&aktBlock)[3][3], tetris& tempBlock, int width, int heig
 	}
 }
 
-bool gameOver(tetris& tempBlock) {
+bool checkGameOver(tetris& tempBlock) {
 	//Wenn in der letzten Reihe ein Block plaziert wurde = Game over
 	for (int i = 0; i < ROWS; i++)
 	{

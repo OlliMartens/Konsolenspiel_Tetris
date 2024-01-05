@@ -216,6 +216,7 @@ int Menu() {
         //einlesen der aktuell gedrückten Taste
         int key = _getch();
 
+        //Counter und Farbe verändern je nach Status
         //////////////////////////////////////////////////////////////////////////////
         if (key == 13) break;
         if (key == 80 && count < 3) count++;

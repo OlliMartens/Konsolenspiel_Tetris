@@ -352,6 +352,3 @@ void gameOver(int& score, string& username){
     logoGameOver();
     username = typeUsername(score);
 }
-
-
-

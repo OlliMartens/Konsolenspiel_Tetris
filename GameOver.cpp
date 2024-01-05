@@ -215,10 +215,12 @@ void logoGameOver() {
 }
 
 void movingSkull() {
+    static int count = 0;
+    static int posX = 0;
+    static int num = 0;
+    //Zurücksetzen der Variablen
+    count = 0; posX = 0; num = 0;
     while (true) {
-        static int count = 0;
-        static int posX = 0;
-        static int num = 0;
 
         if (num == 3)break;
         if (count > 53) {
@@ -321,7 +323,7 @@ string typeUsername(int score) {
 
                     ch = cin.get();
                     // Überprüfen, ob Enter-Taste gedrückt wurde
-                    if (ch == 10) {
+                    if (ch == 10 && !username.empty()) {
                         break;
                     }
 

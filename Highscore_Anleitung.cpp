@@ -190,7 +190,6 @@ void podium(vector<Daten>& dataArray)
 }
 
 
-
 void sortierVektor(vector<Daten>& dataArray)
 {
 	int best = 0;

@@ -1,0 +1,26 @@
+
+Anleitung fuer Tetris:
+
+1. Spielziel: 
+- Ziel ist es, die herabfallenden Figuren so zu platzieren, 
+  dass komplette waagerechte Reihen gebildet werden. Komplette Reihen verschwinden dann und bringen Punkte ein.
+
+2. Steuerung : 
+- Bewege die Figuren nach links oder rechts mit den Pfeiltasten.
+- Drehe die Figuren mit der Drehungstaste oder der Pfeiltaste nach oben.
+- Beschleunige den Fall einer Figur mit der Pfeiltaste nach unten.
+
+3. Punkte : 
+- Fuer jede abgeschlossene Reihe erhaeltst du Punkte.
+- 1 platzierter Block bringt 8 Punkte.
+- 1 abgeschlossene Reihe bringt 40 Punkte.
+- 2 abgeschlossene Reihen bringen 100 Punkte.
+- 3 abgeschlossene reihen bringen 300 Punkte.
+- 4 abgeschlossene Reihen bringen 1200 Punkte.
+- Deine Punkte werden spaeter in der Highscoreliste gezeigt. Schaffst du es in die Top 3 zu kommen?
+  TIPP: Schau dir die Highscoreliste im Vollbildmodus an!
+
+4. Spielende : 
+- Wenn die Figuren bis zum oberen Rand des Spielfelds stapeln, endet das Spiel.
+
+Viel Spass beim Spielen!

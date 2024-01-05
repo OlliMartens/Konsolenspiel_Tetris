@@ -68,3 +68,14 @@ void showNextBlock(int nextBlock, tetris& tempBlock);
 /// <param name="tempBlock">Übergabe des structs mit c.b.r.</param>
 /// <param name="numBlocks"> numBlocks entspricht der Anzahl an Plaziertes Blöcken </param>
 void showPoints(int points, tetris& tempBlock, int numBlocks);
+
+/// <summary>
+/// Ausgabe der Form des Blocks im Intro
+/// </summary>
+void blockFormIntro();
+
+
+/// <summary>
+/// Ausgabe des Intros mit Animations
+/// </summary>
+void intro();

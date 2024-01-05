@@ -452,7 +452,7 @@ void Anleitung()
 	}
 }
 
-void speichernNew(int& points, string& username, vector<Daten> dataArray)
+void speichernNew(int points, string username, vector<Daten>& dataArray)
 {
 	Daten zwischenspeicher;
 

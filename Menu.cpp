@@ -208,7 +208,7 @@ int Menu() {
 
         auswahlbox(21, 7, AW1, "New Game ");
         auswahlbox(21, 11, AW2, "Highscore");
-        auswahlbox(21, 15, AW3, "   Help  ");
+        auswahlbox(21, 15, AW3, "  Manual ");
         auswahlbox(21, 19, AW4, "   Exit  ");
         blocksMenu(count);
         controls();

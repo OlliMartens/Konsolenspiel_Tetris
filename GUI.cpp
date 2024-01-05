@@ -192,6 +192,94 @@ void noCursor()
      color(0x0f);
  }
 
+ void blockFormIntro() {
+     for (int i = 0; i < 91; i++)
+     {
+         go(20 + i, 5);
+         cout << char(219);
+     }
+     for (int i = 0; i < 10; i++)
+     {
+         go(20, 5 + i);
+         cout << char(219);
+         go(111, 5 + i);
+         cout << char(219);
+     }
+     for (int i = 0; i < 31; i++)
+     {
+         go(20 + i, 15);
+         cout << char(219);
+         go(81 + i, 15);
+         cout << char(219);
+     }
+     for (int i = 0; i < 10; i++)
+     {
+         go(50, 15 + i);
+         cout << char(219);
+         go(81, 15 + i);
+         cout << char(219);
+     }
+     for (int i = 0; i < 32; i++)
+     {
+         go(50 + i, 25);
+         cout << char(219);
+     }
+ }
+
+
+void intro() {
+     Sleep(1000);
+     color(9);
+     blockFormIntro();
+     for (int i = 0; i < 30; i++) {
+         for (int j = 0; j < 9; j++) {
+             color(4);
+             go(21 + i, 6 + j);
+             cout << char(219);
+             color(2);
+             go(110 - i, 6 + j);
+             cout << char(219);
+             Sleep(15);
+         }
+     }
+     Sleep(200);
+     for (int i = 0; i < 30; i++) {
+         for (int j = 0; j < 9; j++) {
+             color(6);
+             go(51 + i, 6 + j);
+             cout << char(219);
+             color(2);
+             Sleep(10);
+         }
+     }
+     Sleep(200);
+     for (int i = 0; i < 30; i++) {
+         for (int j = 0; j < 10; j++) {
+             color(5);
+             go(51 + i, 15 + j);
+             cout << char(219);
+             color(2);
+             Sleep(2);
+         }
+     }
+     for (int i = 0; i < 8; i++)
+     {
+         if (i == 0 || i == 2 || i == 4 || i == 6) {
+             color(15);
+             blockFormIntro();
+         }
+         if (i == 1 || i == 3 || i == 5 || i == 7) {
+             color(9);
+             blockFormIntro();
+         }
+         Sleep(200);
+     }
+     Sleep(2000);
+     color(0x0f);
+     go(1, 40);
+
+ }
+
  //Quellen:
  // https://mycodecollection.blogspot.com/2015/01/c-console-basic-graphic-techniques.html
  // https://mycodecollection.blogspot.com/2014/12/console-fun-colors.html

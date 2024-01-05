@@ -65,12 +65,11 @@ bool isValid(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
 }
 
 int isValidShift(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height) {
-	// 0 = shiften in beide Richtungen erlaubt
-	// 1 = shiften nur nach rechts erlaubt (Spielfeldrand links)
-	// 2 = shiften nur nach links erlaubt (Spielfeldrand rechts)
-	// 3 = shiften nur nach links erlaubt (anderer Block rechts)
-	// 4 = shiften nur nach rechts erlaubt (anderer Block links)
-	for (int i = 0; i < 3; i++)
+	// 0 = shiften in keine Richtungen erlaubt
+	// 1 = shiften nur nach rechts erlaubt
+	// 2 = shiften nur nach links erlaubt
+	// 3 = shiften in beide Richtunge erlaubt
+	/*for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++) {
 			if (aktBlock[i][j] == 0) continue;
@@ -88,18 +87,38 @@ int isValidShift(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height)
 			}
 		}
 
+	}*/
+	bool okLeft = true;
+	bool okRight = true;
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++) {
+			if (aktBlock[i][j] == 0 ) continue;
+			if (width + i - 1 < 0 || tempBlock.spielfeld[width + i - 1][height + j] != ' ') {
+				okRight = false;
+			}
+			if (width + i > ROWS - 2 || tempBlock.spielfeld[width + i + 1][height + j] != ' ') {
+				okLeft = false;
+			}
+		}
+
 	}
-	return 0;
+
+	if (okRight == false && okLeft == false) return 0;
+	else if (okRight == false && okLeft == true) return 1;
+	else if (okRight == true && okLeft == false) return 2;
+	else return 3;
+	
 }
 
 void shiftRightLeft(int& width, int ok) {
 	//shift Right
-	if (GetAsyncKeyState(0x27) && (ok == 0 || ok == 1 || ok == 4)) {
+	if (GetAsyncKeyState(0x27) && (ok == 3 || ok == 1 )) {
 		width++;
 	}
 
 	//shift Left
-	if (GetAsyncKeyState(0x25) && (ok == 0 || ok == 2 || ok == 3)) {
+	if (GetAsyncKeyState(0x25) && (ok == 3 || ok == 2 )) {
 		width--;
 	}
 }

@@ -407,7 +407,7 @@ void Anleitung()
 				file << "  dass komplette waagerechte Reihen gebildet werden. Komplette Reihen verschwinden dann und bringen Punkte ein." << endl << endl;
 				file << "2. Steuerung : " << endl;
 				file << "- Bewege die Figuren nach links oder rechts mit den Pfeiltasten." << endl;
-				file << "- Drehe die Figuren mit der Drehungstaste oder der Pfeiltaste nach oben." << endl;
+				file << "- Drehe die Figuren mit der Drehungstaste, hier R." << endl;
 				file << "- Beschleunige den Fall einer Figur mit der Pfeiltaste nach unten." << endl << endl;
 				file << "3. Punkte : " << endl;
 				file << "- Fuer jede abgeschlossene Reihe erhaeltst du Punkte." << endl;
@@ -415,7 +415,6 @@ void Anleitung()
 				file << "- 1 abgeschlossene Reihe bringt 40 Punkte." << endl;
 				file << "- 2 abgeschlossene Reihen bringen 100 Punkte." << endl;
 				file << "- 3 abgeschlossene reihen bringen 300 Punkte." << endl;
-				file << "- 4 abgeschlossene Reihen bringen 1200 Punkte." << endl;
 				file << "- Deine Punkte werden spaeter in der Highscoreliste gezeigt. Schaffst du es in die Top 3 zu kommen?" << endl;
 				file << "  TIPP: Schau dir die Highscoreliste im Vollbildmodus an!" << endl << endl;
 				file << "4. Spielende : " << endl;

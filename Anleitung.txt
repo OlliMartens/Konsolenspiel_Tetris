@@ -7,7 +7,7 @@ Anleitung fuer Tetris:
 
 2. Steuerung : 
 - Bewege die Figuren nach links oder rechts mit den Pfeiltasten.
-- Drehe die Figuren mit der Drehungstaste oder der Pfeiltaste nach oben.
+- Drehe die Figuren mit der Drehungstaste, hier R.
 - Beschleunige den Fall einer Figur mit der Pfeiltaste nach unten.
 
 3. Punkte : 
@@ -16,7 +16,6 @@ Anleitung fuer Tetris:
 - 1 abgeschlossene Reihe bringt 40 Punkte.
 - 2 abgeschlossene Reihen bringen 100 Punkte.
 - 3 abgeschlossene reihen bringen 300 Punkte.
-- 4 abgeschlossene Reihen bringen 1200 Punkte.
 - Deine Punkte werden spaeter in der Highscoreliste gezeigt. Schaffst du es in die Top 3 zu kommen?
   TIPP: Schau dir die Highscoreliste im Vollbildmodus an!
 

@@ -69,25 +69,7 @@ int isValidShift(int(&aktBlock)[3][3], tetris& tempBlock, int width, int height)
 	// 1 = shiften nur nach rechts erlaubt
 	// 2 = shiften nur nach links erlaubt
 	// 3 = shiften in beide Richtunge erlaubt
-	/*for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 3; j++) {
-			if (aktBlock[i][j] == 0) continue;
-			if (width + i - 1 < 0) {
-				return 1;
-			}
-			if (width + i > ROWS - 2) {
-				return 2;
-			}
-			if (tempBlock.spielfeld[width + i + 1][height + j] != ' ') {
-				return 3;
-			}
-			if (tempBlock.spielfeld[width + i - 1][height + j] != ' ') {
-				return 4;
-			}
-		}
 
-	}*/
 	bool okLeft = true;
 	bool okRight = true;
 	for (int i = 0; i < 3; i++)

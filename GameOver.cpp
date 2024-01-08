@@ -281,9 +281,9 @@ void movingSkull() {
 
 void inputBox() {
 
-    go(34, 14);
+    go(26, 14);
     color(6);
-    cout << "Type in your username:" << endl;
+    cout << "Type in your username (max. 10 letters):" << endl;
     go(36, 15);
     cout << "Select with Enter!";
     go(34, 17);
@@ -319,31 +319,40 @@ string typeUsername(int score) {
     color(1);
     go(35, 18);
 
-            while (true) {
-
-                    ch = cin.get();
-                    // Überprüfen, ob Enter-Taste gedrückt wurde
-                    if (ch == 10 && !username.empty()) {
-                        break;
-                    }
-
-                    // Überprüfen, ob Backspace-Taste gedrückt wurde
-                    if (ch == 8) {
-                        if (!username.empty()) {
-                            // Lösche das letzte Zeichen aus der Eingabe
-                            username.pop_back();
-                            cout << ' ';
-                            cout.flush();  // Erzwingt die Ausgabe sofort
-                        }
-                    }
-                    else {
-                        // Füge das eingegebene Zeichen zur Eingabe hinzu
-                        username += ch;
-                        cout << ch;
-                    }
+    while (true) {
 
 
+        if (username.size() > 10) break;
+
+        //ch = cin.get();
+        ch = _getch();
+        // Überprüfen, ob Enter-Taste (ch = 10) gedrückt wurde
+        if (ch == '\r' && !username.empty()) {
+            break;
+        }   //Wenn als erstes Enter und der string noch leer ist lese weiter ein
+        else if (ch == '\r') {
+            go(35, 18);
+            ch = _getch();
+        }
+
+
+        // Überprüfen, ob Backspace-Taste(ch = 8) gedrückt wurde
+        if (ch == '\b') {
+            if (!username.empty()) {
+                // Lösche das letzte Zeichen aus der Eingabe
+                username.pop_back();
+                cout << "\b \b";
+                cout.flush();  // Erzwingt die Ausgabe sofort
             }
+        }
+        else {
+            // Füge das eingegebene Zeichen zur Eingabe hinzu
+            username += ch;
+            cout << ch;
+        }
+
+
+    }
 
     color(0x0f);
     return username;

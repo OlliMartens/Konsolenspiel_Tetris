@@ -1,4 +1,11 @@
 #pragma once
+/*
+	Funktionsbibliothek Spielengine
+	- rotieren der Blöcke
+	- verschieben, ausgeben, löschen der Blöcke
+	Autor: Oliver Martens & Tom Strassburg
+	Letzte Änderung: 09.01.2023
+*/
 
 	const int ROWS = 20; //Anzahl Spalten (waagerecht)
 	const int COLS = 20; //Anzahl Zeilen (senkrecht)

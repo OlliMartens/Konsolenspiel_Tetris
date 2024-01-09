@@ -1,4 +1,12 @@
 #pragma once
+/*
+	Funktionsbibliothek für Grafische Elemente
+	- Cursor ausblenden
+	- Curosor setzen
+	- Körper auf der Konsole ausgeben (simple_square)
+	Autor: Oliver Martens & Tom Strassburg
+	Letzte Änderung: 09.01.2023
+*/
 #include "functions.h"
 
 /// <summary>

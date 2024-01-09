@@ -1,3 +1,8 @@
+/*
+	Spielengine und Spielefunktionen
+	Autor: Oliver Martens & Tom Strassburg
+	Letzte Änderung: 09.01.2023
+*/
 #include <iostream>
 #include <windows.h>
 #include "functions.h"

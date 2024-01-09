@@ -1,3 +1,8 @@
+/*
+	Bestenliste und Anleitung
+	Autor: Oliver Martens & Tom Strassburg
+	Letzte Änderung: 09.01.2023
+*/
 #include <conio.h>
 #include "Highscore_Anleitung.h"
 #include "GUI.h"

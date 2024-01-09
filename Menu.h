@@ -1,4 +1,11 @@
 #pragma once
+/*
+	Funktionsbibliothek für das Menu
+	- Ausgabe des Tetris-Schriftzugs
+	- Auswählen der Menupunkte -> New Game, Highscore, ...
+	Autor: Oliver Martens & Tom Strassburg
+	Letzte Änderung: 09.01.2023
+*/
 #include <iostream>
 #include <string>
 

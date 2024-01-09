@@ -1,3 +1,8 @@
+/*
+    Grafische Elemente einbelenden
+    Autor: Oliver Martens & Tom Strassburg
+    Letzte Änderung: 09.01.2023
+*/
 #include <iostream>  
 #include <Windows.h>  
 #include "functions.h"

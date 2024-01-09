@@ -1,4 +1,12 @@
 #pragma once
+/*
+	Funktionsbibliothek für GameOver-Screen
+	- GameOver Logo
+	- Animation Skull
+	- Eingabe Nutzername
+	Autor: Oliver Martens & Tom Strassburg
+	Letzte Änderung: 09.01.2024
+*/
 #include <string>
 
 using namespace std;

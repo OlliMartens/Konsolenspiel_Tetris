@@ -1,3 +1,8 @@
+/*
+    Spiele-Menu 
+    Autor: Oliver Martens & Tom Strassburg
+    Letzte Änderung: 09.01.2023
+*/
 #include <iostream>
 #include <string>
 #include <Windows.h>
@@ -92,6 +97,7 @@ void blocksMenu(int count) {
 }
 
 void auswahlbox(int a, int b, int colorIn, string text) {
+    //Auswahlbox mit den Schriftzügen "New Game" ,...
     color(0x0f);
     go(a, b);
     cout << char(218) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196)
@@ -152,7 +158,7 @@ void logoTetris() {       //Tetris Logo
 }
 
 void controls() {
-
+    //Visuelle Ausgabe der Tasten
     color(12);
     go(65, 9);
     cout << "Controls:";

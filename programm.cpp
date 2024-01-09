@@ -1,3 +1,8 @@
+/*
+	Programmablauf mit den Funktionsaufrufen
+	Autor: Oliver Martens & Tom Strassburg
+	Letzte Änderung: 09.01.2023
+*/
 #include <iostream>
 #include <windows.h>
 #include <conio.h>	
@@ -52,6 +57,7 @@ int main() {
 		system("cls");
 		int zustand = Menu();
 
+		//Deine Auswahl des Menupunktes(Zustand)
 		switch (zustand)
 		{
 		case 0:

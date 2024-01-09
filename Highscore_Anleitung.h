@@ -1,4 +1,12 @@
 #pragma once
+/*
+	Funktionsbibliothek für Highscoreliste und Anleitung
+	- Ausgabe des Podiums mit der Bestenliste
+	- Ausgabe der Anleitung
+	- Sortieren und Einlesen der Benutzernamen und Punkte
+	Autor: Oliver Martens & Tom Strassburg
+	Letzte Änderung: 09.01.2023
+*/
 #include <vector>
 #include <string>
 #include <iostream>
@@ -42,7 +50,7 @@ void logoManual();
 void Anleitung();
 
 /// <summary>
-///
+///	Einfügen & Speichern des Benutzernamens und des Punktestands
 /// </summary>
 /// <param name="points"> Übergabe des Punktestands </param>
 /// <param name="username"> Übergabe des Nutzernamens </param>

@@ -321,9 +321,6 @@ string typeUsername(int score) {
 
     while (true) {
 
-
-        if (username.size() > 10) break;
-
         //ch = cin.get();
         go(35 + username.size(), 18);
         ch = _getch();
@@ -345,13 +342,11 @@ string typeUsername(int score) {
                 cout.flush();  // Erzwingt die Ausgabe sofort
             }
         }
-        else {
+        else if (username.size() <= 10) {
             // Füge das eingegebene Zeichen zur Eingabe hinzu
             username += ch;
             cout << ch;
         }
-
-
     }
 
     color(0x0f);

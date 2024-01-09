@@ -325,14 +325,14 @@ string typeUsername(int score) {
         if (username.size() > 10) break;
 
         //ch = cin.get();
+        go(35 + username.size(), 18);
         ch = _getch();
         // Überprüfen, ob Enter-Taste (ch = 10) gedrückt wurde
         if (ch == '\r' && !username.empty()) {
             break;
         }   //Wenn als erstes Enter und der string noch leer ist lese weiter ein
         else if (ch == '\r') {
-            go(35, 18);
-            ch = _getch();
+            continue;
         }
 
 
